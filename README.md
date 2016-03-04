@@ -1,5 +1,5 @@
-# D3.js 101
+# Introduction to Big Data
 
-A technical intro to D3.js visualization library. Made with [Reveal.js](http://lab.hakim.se/reveal-js/), [Jade](http://jade-lang.com/), [Stylus](http://learnboost.github.com/stylus/), and (of course) [D3](http://d3js.org/).
+A simple intro to Big Data from a more practical point of view. Made with [Reveal.js](http://lab.hakim.se/reveal-js/), [Jade](http://jade-lang.com/), [Stylus](http://learnboost.github.com/stylus/), and [D3](http://d3js.org/).
 
-Check it out [here](http://scottcheng.github.com/d3js-101/).
+See the [presentation here](http://infovis.co/introToBigData).
