@@ -1,0 +1,532 @@
+doctype html
+html
+  head
+    title Intro to InfoVis using d3.js
+    meta(charset='utf-8')
+    meta(name='author', content='John Alexis Guerra Gomez')
+    meta(name='description', content='Intro to Big data')
+    meta(name="viewport",content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui")
+    //- link(href='lib/css/reveal.css', rel='stylesheet')
+    //- link(href='lib/css/theme/simple.css', rel='stylesheet')
+    //- link(href='lib/css/zenburn.css', rel='stylesheet')
+    link(href='style.css', rel='stylesheet')
+    //- Printing and PDF exports -->
+    script.
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'lib/css/print/pdf.css' : 'lib/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    script(src='lib/js/d3.min.js')
+    script(src='lib/js/bumpChartPhotos.js')
+  body
+    .reveal
+      .slides
+        section#title
+          h1 Intro to BigData
+          //- h3 using d3.js
+          p
+            a(href='http://johnguerra.co/', target='_blank') John Alexis Guerra Gómez
+          p.small Use
+            strong spacebar
+            | and the arrows to advance slides
+          p.small
+            a(href='http://infovis.co/introToBigData', target='_blank') http://infovis.co/introToBigData
+
+        section#outline
+          h2 Outline
+          ol
+            li What is Big Data?
+            li Analytics: How to make sense of data?
+            li Techniques
+            li Technologies
+            li What is Infovis?
+            //- li Types of Visualization
+            li Infovis Basics
+            //- li Hands-On with D3.js
+        section#whatIsBigData
+          section
+            h2 What is Big Data?
+
+          section
+            h2 You might have heard of the 3Vs
+            ul
+              li.fragment Velocity
+              li.fragment Variety
+              li.fragment Volume
+            p.fragment Too ambiguous!! Let's go beyond that
+
+          section
+            h2 How Big is big?
+            p.fragment Can you fit it in one computer?
+            p.fragment Yes? -> Then is not really big
+            p.fragment Let's call it big data only if it doesn't fit on one computer (and has the 3Vs)
+
+          section
+            h2 Why this criteria?
+            p.fragment Because if it fits in one computer you don't need all the overhead of big data technologies, just use a traditional relational database.
+
+          section
+            h2 Example: photo collection
+            ul
+              li.fragment One photo -> 10MB
+              li.fragment 1k photos in a cellphone -> 10MB * 1k = 10000MB = 10GB
+              li.fragment 50k photos in your computer -> 10MB * 50k = 500GB
+              li.fragment Is that big data?
+              li.fragment No, you can fit that in one cheap external hard drive
+              li.fragment BTW, Flickr gives you 1000GB (1TB) for free
+
+          section
+            h2 Problem: count how many blue photos in my collection?
+            p How do you compute this?
+            p.fragment Put all your photos in one computer
+            p.fragment Go through all the collection and count
+
+          section
+            h2 Flickr size
+            p 80+ trillion photos (80'''000''000'000.000)
+            p.fragment That's big data
+
+          section
+            h2 How many blue photos on Flickr?
+            p How do you compute this?
+            p.fragment Distribute the data among hundreds of thousand of computers (a cluster).
+            p.fragment Compute subtotals on each chunk of the data. (Map)
+            p.fragment Aggregate the subtotals into one big total. (Reduce)
+
+          section
+            h2 How many computers do you need?
+            p.fragment total / one computer capacity?
+            p.fragment What if one computer breaks down?
+            p.fragment We need redundancy -> Each photo is stored in many computers
+            p.fragment How do we control versions? How to keep records? What goes where?
+            p.fragment
+              strong That's why we need big data!!
+
+        section
+          section#Technologies
+            h1 Technologies
+            ul
+              li.fragment Map-Reduce (Hadoop, Hive, Spark, pig, ...)
+              li.fragment NoSQL Databases (MongoDB)
+              li.fragment Distributed Relational (SQL) Databases (MySQL, PostgreSQL, Oracle, SqlServer)
+              li.fragment All are technologies of cloud computing (Amazon Web Service, Google App Engine, Microsoft Azure)
+
+          section#Techniques
+            h1 Technologies
+            ul
+              li.fragment Statistic Analysis
+              li.fragment Machine Learning
+              li.fragment Artificial Intelligence
+              li.fragment Analytics
+              li.fragment Information Visualization
+
+
+
+        section#whatIsInfoVis
+          section
+            h2 What is Information Visualization?
+          section
+            h2 Data
+            ul
+              li Health records
+              li Financial transactions
+              li Facebook Social Graph
+              li Tweets
+              li Wikipedia edits
+          section
+            h2 Data (II)
+            ul
+              li We know how to:
+                li Store it (big table, NoSql, etc)
+                li Process it (map-reduce, parallel computing)
+              li But how to make sense of it?
+          section
+            h2 How to make sense of data?
+          section
+            h3 Data Mining/Machine Learning
+            p: img(src='images/machine_learning_diagram.png')
+          section
+            h3 Information Visualization
+            p: img(src='images/infovis_diagram.png')
+          section
+            h3 Infovis + Algorithms
+            p: img(src='images/infovis_algorithms_diagram.png')
+          section
+            table#comparisonTable
+              tr
+                td.fragment
+                  h2 Traditional
+                  ul
+                    li Query for known patterns
+                    li Display results using  traditional techniques
+                  br
+                  strong Pros:
+                  br
+                  ul
+                    li Many solutions
+                    li Easier to implement
+                  br
+                  strong Cons:
+                  br
+                  ul
+                    li Can’t search for the unexpected
+
+                td.fragment
+                  h2 Data Mining/ML
+                  ul
+                    li Based on statistics
+                    li Black box approach
+                    li Output outliers and correlations
+                    li  Human out of the loop
+                  br
+                  strong Pros:
+                  br
+                  ul
+                    li  Scalable
+                  br
+                  strong Cons:
+                  ul
+                    li  Analysts have to make sense of the results
+                    li  Makes assumptions on the data
+
+                td.fragment
+                  h2 InfoVis
+                  ul
+                    li  Visual Interactive Interfaces
+                    li  Human in the loop
+                  br
+                  strong Pros:
+                  br
+                  ul
+                    li  Visual bandwidth is enormous
+                    li  Experts decided what to search for
+                    li  Identify unknown patterns and errors in the data
+                  br
+                  strong Cons
+                  br
+                  ul
+                    li Scalability can be an issue
+          section
+            h2 Why should we visualize?
+
+          section
+            h2 Anscombe's quartet
+            img(src="images/anscombes.jpg")
+
+          section
+            h2 Anscombe's quartet
+            img(src="images/anscombes2.jpg")
+
+          section
+            h2 Anscombe's visualized
+            img(src="images/anscombes_graph.jpg")
+
+          section
+            h2 In Infovis we look for insights
+            ul
+              li Deep understanding
+              li Meaningful
+              li Non obvious
+              li Actionable
+
+        section#typesOfVisualization
+          section
+            h2 Types of Visualization
+            ul
+              li Infographics
+              li Scientific Visualization (sciviz)
+              li Information Visualization (infovis, datavis)
+
+          section
+            h3 Infographics
+            img(src="images/infographics.png")
+
+          section
+            h3 Scientific Visualization
+            ul
+              li Inherently spatial
+              li 2D and 3D
+            p: img(src="images/sciviz.png")
+
+
+          section
+            h3 Information Visualization
+            img(src="images/infovis_examples.png")
+
+        section#basics
+          section
+            h2 Infovis Basics
+          section
+            h2 Visualization Mantra
+            ul
+              li Overview first
+              li Zoom and Filter
+              li Details on Demand
+          section#munznerstyle
+            iframe(width='100%', height='500px', scrolling='no', frameborder='no', src= "munzner.html")
+
+          section#munznerpreference
+            h2 Perception Preference
+            div#munznerpreferencechart
+            script.
+              myBumpChart = bumpChartPhotos()
+              .x(function (d) { return d.dataType; })
+              .y(function (d) { return d.position; })
+              .key(function (d) { return d.attribute; })
+              .label(function (d) { return d.attribute; })
+              .width(900)
+              .height(400);
+              //- img(src="images/munzner_preference.png", height="400px")
+
+              d3.json("munzner_preference.json", function (err, data) {
+                var procData =[];
+                data.forEach(function (c) {
+                  c.preference.forEach(function (p, i) {
+                    procData.push({
+                      "dataType":c.type,
+                      "position":i,
+                      "attribute":p
+                    });
+                  });
+                });
+
+                d3.select("#munznerpreferencechart")
+                  .datum(procData)
+                  // .style("height", timelineHeight + "px")
+                  .call(myBumpChart);
+
+              });
+
+            p.small Adapted from from:
+             a(href="http://www.cs.ubc.ca/labs/imager/tr/2009/VisChapter/akp-vischapter.pdf", target='_blank') Tamara Munzner Book Chapter
+
+          section#dataTypes
+            section
+              h2 Data Types
+              table.small
+                tr
+                  td: strong 1-D Linear
+                  td Document Lens, SeeSoft, Info Mural
+                tr
+                  td: strong  2-D Map
+                  td GIS, ArcView, PageMaker, Medical imagery
+                tr
+                  td: strong  3-D World
+                  td CAD, Medical, Molecules, Architecture
+                tr
+                  td: strong  Multi-Var
+                  td Spotfire, Tableau, GGobi, TableLens, ParCoords,
+                tr
+                  td: strong  Temporal
+                  td LifeLines, TimeSearcher, Palantir, DataMontage, LifeFlow
+                tr
+                  td: strong  Tree
+                  td Cone/Cam/Hyperbolic, SpaceTree, Treemap, Treeversity
+                tr
+                  td: strong  Network
+                  td Gephi, NodeXL, Sigmajs
+
+
+        section#handsOn
+          section
+            h2 Hands-On Tutorial
+            | Follow tutorial here
+            a(href="https://goo.gl/KZTCsG")  https://goo.gl/KZTCsG
+
+          section
+            h3 Step 1: Selections
+            div.followLink: a(href="http://jsfiddle.net/duto_guerra/hpzm8cgr/1/") http://jsfiddle.net/duto_guerra/hpzm8cgr/1/
+            button.execute(onclick="runStep01()") Run
+            br
+            pre: code
+              include tutorial1/step01.js
+            div.target#chart01
+            script
+              | function runStep01() {
+              include tutorial1/step01.js
+              | }
+
+          section
+            h3 Step 2 Binding data
+            div.followLink: a(href="http://jsfiddle.net/duto_guerra/hpzm8cgr/2/") http://jsfiddle.net/duto_guerra/hpzm8cgr/2/
+            button.execute(onclick="runStep02()") Run
+            br
+            pre: code
+              include tutorial1/step02.js
+            div.target#chart02
+            script
+              | function runStep02() {
+              include tutorial1/step02.js
+              | }
+
+          section
+            h3 Step 3 Remove and Update
+            div.followLink: a(href="http://jsfiddle.net/duto_guerra/hpzm8cgr/3/") http://jsfiddle.net/duto_guerra/hpzm8cgr/3/
+            button.execute(onclick="runStep03()") Run
+            br
+            pre: code
+              include tutorial1/step03.js
+            div.target#chart03
+            script
+              | function runStep03() {
+              include tutorial1/step03.js
+              | }
+          section
+            h3 Step 4 SVG
+            div.followLink: a(href="http://jsfiddle.net/duto_guerra/hpzm8cgr/4/") http://jsfiddle.net/duto_guerra/hpzm8cgr/4/
+            button.execute(onclick="runStep04()") Run
+            br
+            pre: code
+              include tutorial1/step04.js
+            div.target#chart04
+            script
+              | function runStep04() {
+              include tutorial1/step04.js
+              | }
+          section
+            h3 Step 5 Transitions
+            div.followLink: a(href="http://jsfiddle.net/duto_guerra/hpzm8cgr/5/") http://jsfiddle.net/duto_guerra/hpzm8cgr/5/
+            button.execute(onclick="runStep05()") Run
+            br
+            pre: code
+              include tutorial1/step05.js
+            div.target#chart05
+            script
+              | function runStep05() {
+              include tutorial1/step05.js
+              | }
+          section
+            h3 Step 6 Scales
+            div.followLink: a(href="http://jsfiddle.net/duto_guerra/hpzm8cgr/7/") http://jsfiddle.net/duto_guerra/hpzm8cgr/7/
+            button.execute(onclick="runStep06()") Run
+            br
+            pre: code
+              include tutorial1/step06.js
+            div.target#chart06
+            script
+              | function runStep06() {
+              include tutorial1/step06.js
+              | }
+          section
+            h3 Step 7 Axis
+            div.followLink: a(href="http://jsfiddle.net/duto_guerra/hpzm8cgr/9/") http://jsfiddle.net/duto_guerra/hpzm8cgr/9/
+            button.execute(onclick="runStep07()") Run
+            br
+            pre: code
+              include tutorial1/step07.js
+            div.target#chart07
+            script
+              | function runStep07() {
+              include tutorial1/step07.js
+              | }
+          section
+            h3 Step 8 Download data
+            div.followLink: a(href="http://jsfiddle.net/hpzm8cgr/20/") http://jsfiddle.net/hpzm8cgr/20/
+            button.execute(onclick="runStep08()") Run
+            br
+            pre: code
+              include tutorial1/step08.js
+            div.target#chart08
+            script
+              | function runStep08() {
+              include tutorial1/step08.js
+              | }
+          section
+            h3 Step 9 Events
+            div.followLink: a(href="http://jsfiddle.net/hpzm8cgr/21/") http://jsfiddle.net/hpzm8cgr/21/
+            button.execute(onclick="runStep09()") Run
+            br
+            pre: code
+              include tutorial1/step09.js
+            div.target
+              div#chart09
+              img#image09
+            script
+              | function runStep09() {
+              include tutorial1/step09.js
+              | }
+          section
+            h3 Step 10 Extras
+            div.followLink: a(href="http://jsfiddle.net/hpzm8cgr/22/") http://jsfiddle.net/hpzm8cgr/22/
+            button.execute(onclick="runStep10()") Run
+            br
+            pre: code
+              include tutorial1/step10.js
+            div.target
+              select(id="attrSelect")
+                option(value="count_views") views
+                option(value="count_faves") faves
+                option(value="count_comments") comments
+              div#chart10
+              img#image10
+            script
+              | function runStep10() {
+              include tutorial1/step10.js
+              | }
+
+
+        section#resources
+          h2 Resources
+          p: a(href='http://d3js.org/', target='_blank') D3.js Website
+          p: a(href='https://github.com/mbostock/d3/wiki/Gallery', target='_blank') Gallery
+          p: a(href='https://github.com/mbostock/d3/wiki/Tutorials', target='_blank') Tutorials
+          p: a(href='https://github.com/mbostock/d3/wiki/API-Reference', target='_blank') API Reference
+          p: a(href='https://github.com/mbostock/d3', target='_blank') GitHub Project
+
+        section#end
+          h1 Thank You
+          h2 Questions?
+          div.contactInfo
+            p John Alexis Guerra Gómez
+            a(href="http://johnguerra.co") johnguerra.co
+            br
+            a(href="http://twitter.com/duto_guerra") @duto_guerra
+
+    script(src='lib/js/head.min.js')
+    script(src='lib/js/reveal.js')
+
+    script.
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        rollingLinks: true,
+        transition: "convex",
+        //- width: "90%",
+        //- height: 1.0,
+        dependencies: [
+          // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+          // Interpret Markdown in <section> elements
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+          // Syntax highlight for <code> elements
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+          // Zoom in and out with Alt+click
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+
+          // Speaker notes
+          { src: 'plugin/notes/notes.js', async: true },
+
+          //- // Remote control your reveal.js presentation using a touch device
+          //- { src: 'plugin/remotes/remotes.js', async: true },
+
+          //- // MathJax
+          //- { src: 'plugin/math/math.js', async: true }
+        ]
+      });
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50178794-5', 'auto');
+      ga('send', 'pageview');
+
+
