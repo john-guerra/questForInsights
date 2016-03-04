@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to InfoVis using d3.js</title>
+    <meta charset="utf-8">
+    <meta name="author" content="John Alexis Guerra Gomez">
+    <meta name="description" content="Intro to Big data">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link href="style.css" rel="stylesheet">
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'lib/css/print/pdf.css' : 'lib/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <script src="lib/js/d3.min.js"></script>
+    <script src="lib/js/bumpChartPhotos.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section id="title">
+          <h1>Intro to BigData</h1>
+          <p><a href="http://johnguerra.co/" target="_blank">John Alexis Guerra Gómez</a></p>
+          <p class="small">Use<strong>spacebar</strong>and the arrows to advance slides</p>
+          <p class="small"><a href="http://infovis.co/introToBigData" target="_blank">http://infovis.co/introToBigData</a></p>
+        </section>
+        <section id="outline">
+          <h2>Outline</h2>
+          <ol>
+            <li>What is Big Data?</li>
+            <li>Analytics: How to make sense of data?</li>
+            <li>Techniques</li>
+            <li>Technologies</li>
+            <li>What is Infovis?</li>
+            <li>Infovis Basics</li>
+          </ol>
+        </section>
+        <section id="whatIsBigData">
+          <section>
+            <h2>What is Big Data?</h2>
+          </section>
+          <section>
+            <h2>You might have heard of the 3Vs</h2>
+            <ul>
+              <li class="fragment">Velocity</li>
+              <li class="fragment">Variety</li>
+              <li class="fragment">Volume</li>
+            </ul>
+            <p class="fragment">Too ambiguous!! Let's go beyond that</p>
+          </section>
+          <section>
+            <h2>How Big is big?</h2>
+            <p class="fragment">Can you fit it in one computer?</p>
+            <p class="fragment">Yes? -> Then is not really big</p>
+            <p class="fragment">Let's call it big data only if it doesn't fit on one computer (and has the 3Vs)</p>
+          </section>
+          <section>
+            <h2>Why this criteria?</h2>
+            <p class="fragment">Because if it fits in one computer you don't need all the overhead of big data technologies, just use a traditional relational database.</p>
+          </section>
+          <section>
+            <h2>Example: photo collection</h2>
+            <ul>
+              <li class="fragment">One photo -> 10MB</li>
+              <li class="fragment">1k photos in a cellphone -> 10MB * 1k = 10000MB = 10GB</li>
+              <li class="fragment">50k photos in your computer -> 10MB * 50k = 500GB</li>
+              <li class="fragment">Is that big data?</li>
+              <li class="fragment">No, you can fit that in one cheap external hard drive</li>
+              <li class="fragment">BTW, Flickr gives you 1000GB (1TB) for free</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Problem: count how many blue photos in my collection?</h2>
+            <p>How do you compute this?</p>
+            <p class="fragment">Put all your photos in one computer</p>
+            <p class="fragment">Go through all the collection and count</p>
+          </section>
+          <section>
+            <h2>Flickr size</h2>
+            <p>80+ trillion photos (80'''000''000'000.000)</p>
+            <p class="fragment">That's big data</p>
+          </section>
+          <section>
+            <h2>How many blue photos on Flickr?</h2>
+            <p>How do you compute this?</p>
+            <p class="fragment">Distribute the data among hundreds of thousand of computers (a cluster).</p>
+            <p class="fragment">Compute subtotals on each chunk of the data. (Map)</p>
+            <p class="fragment">Aggregate the subtotals into one big total. (Reduce)</p>
+          </section>
+          <section>
+            <h2>How many computers do you need?</h2>
+            <p class="fragment">total / one computer capacity?</p>
+            <p class="fragment">What if one computer breaks down?</p>
+            <p class="fragment">We need redundancy -> Each photo is stored in many computers</p>
+            <p class="fragment">How do we control versions? How to keep records? What goes where?</p>
+            <p class="fragment"><strong>That's why we need big data!!</strong></p>
+          </section>
+        </section>
+        <section>
+          <section id="Technologies">
+            <h1>Technologies</h1>
+            <ul>
+              <li class="fragment">Map-Reduce (Hadoop, Hive, Spark, pig, ...)</li>
+              <li class="fragment">NoSQL Databases (MongoDB)</li>
+              <li class="fragment">Distributed Relational (SQL) Databases (MySQL, PostgreSQL, Oracle, SqlServer)</li>
+              <li class="fragment">All are technologies of cloud computing (Amazon Web Service, Google App Engine, Microsoft Azure)</li>
+            </ul>
+          </section>
+          <section id="Techniques">
+            <h1>Technologies</h1>
+            <ul>
+              <li class="fragment">Statistic Analysis</li>
+              <li class="fragment">Machine Learning</li>
+              <li class="fragment">Artificial Intelligence</li>
+              <li class="fragment">Analytics</li>
+              <li class="fragment">Information Visualization</li>
+            </ul>
+          </section>
+        </section>
+        <section id="whatIsInfoVis">
+          <section>
+            <h2>What is Information Visualization?</h2>
+          </section>
+          <section>
+            <h2>Data</h2>
+            <ul>
+              <li>Health records</li>
+              <li>Financial transactions</li>
+              <li>Facebook Social Graph</li>
+              <li>Tweets</li>
+              <li>Wikipedia edits</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Data (II)</h2>
+            <ul>
+              <li>We know how to:
+                <li>Store it (big table, NoSql, etc)</li>
+                <li>Process it (map-reduce, parallel computing)</li>
+              </li>
+              <li>But how to make sense of it?</li>
+            </ul>
+          </section>
+          <section>
+            <h2>How to make sense of data?</h2>
+          </section>
+          <section>
+            <h3>Data Mining/Machine Learning</h3>
+            <p><img src="images/machine_learning_diagram.png"></p>
+          </section>
+          <section>
+            <h3>Information Visualization</h3>
+            <p><img src="images/infovis_diagram.png"></p>
+          </section>
+          <section>
+            <h3>Infovis + Algorithms</h3>
+            <p><img src="images/infovis_algorithms_diagram.png"></p>
+          </section>
+          <section>
+            <table id="comparisonTable">
+              <tr>
+                <td class="fragment">
+                  <h2>Traditional</h2>
+                  <ul>
+                    <li>Query for known patterns</li>
+                    <li>Display results using  traditional techniques</li>
+                  </ul><br><strong>Pros:</strong><br>
+                  <ul>
+                    <li>Many solutions</li>
+                    <li>Easier to implement</li>
+                  </ul><br><strong>Cons:</strong><br>
+                  <ul>
+                    <li>Can’t search for the unexpected</li>
+                  </ul>
+                </td>
+                <td class="fragment">
+                  <h2>Data Mining/ML</h2>
+                  <ul>
+                    <li>Based on statistics</li>
+                    <li>Black box approach</li>
+                    <li>Output outliers and correlations</li>
+                    <li> Human out of the loop</li>
+                  </ul><br><strong>Pros:</strong><br>
+                  <ul>
+                    <li> Scalable</li>
+                  </ul><br><strong>Cons:</strong>
+                  <ul>
+                    <li> Analysts have to make sense of the results</li>
+                    <li> Makes assumptions on the data</li>
+                  </ul>
+                </td>
+                <td class="fragment">
+                  <h2>InfoVis</h2>
+                  <ul>
+                    <li> Visual Interactive Interfaces</li>
+                    <li> Human in the loop</li>
+                  </ul><br><strong>Pros:</strong><br>
+                  <ul>
+                    <li> Visual bandwidth is enormous</li>
+                    <li> Experts decided what to search for</li>
+                    <li> Identify unknown patterns and errors in the data</li>
+                  </ul><br><strong>Cons</strong><br>
+                  <ul>
+                    <li>Scalability can be an issue</li>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          </section>
+          <section>
+            <h2>Why should we visualize?</h2>
+          </section>
+          <section>
+            <h2>Anscombe's quartet</h2><img src="images/anscombes.jpg">
+          </section>
+          <section>
+            <h2>Anscombe's quartet</h2><img src="images/anscombes2.jpg">
+          </section>
+          <section>
+            <h2>Anscombe's visualized</h2><img src="images/anscombes_graph.jpg">
+          </section>
+          <section>
+            <h2>In Infovis we look for insights</h2>
+            <ul>
+              <li>Deep understanding</li>
+              <li>Meaningful</li>
+              <li>Non obvious</li>
+              <li>Actionable</li>
+            </ul>
+          </section>
+        </section>
+        <section id="typesOfVisualization">
+          <section>
+            <h2>Types of Visualization</h2>
+            <ul>
+              <li>Infographics</li>
+              <li>Scientific Visualization (sciviz)</li>
+              <li>Information Visualization (infovis, datavis)</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Infographics</h3><img src="images/infographics.png">
+          </section>
+          <section>
+            <h3>Scientific Visualization</h3>
+            <ul>
+              <li>Inherently spatial</li>
+              <li>2D and 3D</li>
+            </ul>
+            <p><img src="images/sciviz.png"></p>
+          </section>
+          <section>
+            <h3>Information Visualization</h3><img src="images/infovis_examples.png">
+          </section>
+        </section>
+        <section id="basics">
+          <section>
+            <h2>Infovis Basics</h2>
+          </section>
+          <section>
+            <h2>Visualization Mantra</h2>
+            <ul>
+              <li>Overview first</li>
+              <li>Zoom and Filter</li>
+              <li>Details on Demand</li>
+            </ul>
+          </section>
+          <section id="munznerstyle">
+            <iframe width="100%" height="500px" scrolling="no" frameborder="no" src="munzner.html"></iframe>
+          </section>
+          <section id="munznerpreference">
+            <h2>Perception Preference</h2>
+            <div id="munznerpreferencechart"></div>
+            <script>
+              myBumpChart = bumpChartPhotos()
+              .x(function (d) { return d.dataType; })
+              .y(function (d) { return d.position; })
+              .key(function (d) { return d.attribute; })
+              .label(function (d) { return d.attribute; })
+              .width(900)
+              .height(400);
+              //- img(src="images/munzner_preference.png", height="400px")
+              
+              d3.json("munzner_preference.json", function (err, data) {
+                var procData =[];
+                data.forEach(function (c) {
+                  c.preference.forEach(function (p, i) {
+                    procData.push({
+                      "dataType":c.type,
+                      "position":i,
+                      "attribute":p
+                    });
+                  });
+                });
+              
+                d3.select("#munznerpreferencechart")
+                  .datum(procData)
+                  // .style("height", timelineHeight + "px")
+                  .call(myBumpChart);
+              
+              });
+              
+            </script>
+            <p class="small">Adapted from from:<a href="http://www.cs.ubc.ca/labs/imager/tr/2009/VisChapter/akp-vischapter.pdf" target="_blank">Tamara Munzner Book Chapter</a></p>
+          </section>
+          <section id="dataTypes">
+            <section>
+              <h2>Data Types</h2>
+              <table class="small">
+                <tr>
+                  <td><strong>1-D Linear</strong></td>
+                  <td>Document Lens, SeeSoft, Info Mural</td>
+                </tr>
+                <tr>
+                  <td><strong> 2-D Map</strong></td>
+                  <td>GIS, ArcView, PageMaker, Medical imagery</td>
+                </tr>
+                <tr>
+                  <td><strong> 3-D World</strong></td>
+                  <td>CAD, Medical, Molecules, Architecture</td>
+                </tr>
+                <tr>
+                  <td><strong> Multi-Var</strong></td>
+                  <td>Spotfire, Tableau, GGobi, TableLens, ParCoords,</td>
+                </tr>
+                <tr>
+                  <td><strong> Temporal</strong></td>
+                  <td>LifeLines, TimeSearcher, Palantir, DataMontage, LifeFlow</td>
+                </tr>
+                <tr>
+                  <td><strong> Tree</strong></td>
+                  <td>Cone/Cam/Hyperbolic, SpaceTree, Treemap, Treeversity</td>
+                </tr>
+                <tr>
+                  <td><strong> Network</strong></td>
+                  <td>Gephi, NodeXL, Sigmajs</td>
+                </tr>
+              </table>
+            </section>
+          </section>
+        </section>
+        <section id="handsOn">
+          <section>
+            <h2>Hands-On Tutorial</h2>Follow tutorial here<a href="https://goo.gl/KZTCsG"> https://goo.gl/KZTCsG</a>
+          </section>
+          <section>
+            <h3>Step 1: Selections</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/1/">http://jsfiddle.net/duto_guerra/hpzm8cgr/1/</a></div>
+            <button onclick="runStep01()" class="execute">Run</button><br>
+            <pre><code>d3.select("#chart01")
+    .append("p")
+    .text("hola mundo");
+
+d3.selectAll("p")
+    .style("font-size", "23pt");</code></pre>
+            <div id="chart01" class="target"></div>
+            <script>function runStep01() {d3.select("#chart01")
+    .append("p")
+    .text("hola mundo");
+
+d3.selectAll("p")
+    .style("font-size", "23pt");}
+            </script>
+          </section>
+          <section>
+            <h3>Step 2 Binding data</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/2/">http://jsfiddle.net/duto_guerra/hpzm8cgr/2/</a></div>
+            <button onclick="runStep02()" class="execute">Run</button><br>
+            <pre><code>var myData = [ 22, 15, 20];
+
+var chart = d3.select("#chart02");
+
+var items = chart.selectAll("p")
+    .data(myData);
+
+items.enter().append("p")
+    .style("font-size", function (d) {
+        return d + "pt";
+    })
+    .text("hola mundo");
+</code></pre>
+            <div id="chart02" class="target"></div>
+            <script>function runStep02() {var myData = [ 22, 15, 20];
+
+var chart = d3.select("#chart02");
+
+var items = chart.selectAll("p")
+    .data(myData);
+
+items.enter().append("p")
+    .style("font-size", function (d) {
+        return d + "pt";
+    })
+    .text("hola mundo");
+}
+            </script>
+          </section>
+          <section>
+            <h3>Step 3 Remove and Update</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/3/">http://jsfiddle.net/duto_guerra/hpzm8cgr/3/</a></div>
+            <button onclick="runStep03()" class="execute">Run</button><br>
+            <pre><code>var myData = [ 22, 15, 20];
+
+var chart = d3.select("#chart03");
+
+var redraw = function (myData) {
+    var items = chart.selectAll("p")
+        .data(myData);    
+    items.enter().append("p");
+    
+    items
+        .style("font-size", function (d) {
+            return d + "pt";
+        })
+        .text("hola mundo");
+    
+    items.exit().remove();
+};
+
+
+redraw(myData);
+</code></pre>
+            <div id="chart03" class="target"></div>
+            <script>function runStep03() {var myData = [ 22, 15, 20];
+
+var chart = d3.select("#chart03");
+
+var redraw = function (myData) {
+    var items = chart.selectAll("p")
+        .data(myData);    
+    items.enter().append("p");
+    
+    items
+        .style("font-size", function (d) {
+            return d + "pt";
+        })
+        .text("hola mundo");
+    
+    items.exit().remove();
+};
+
+
+redraw(myData);
+}
+            </script>
+          </section>
+          <section>
+            <h3>Step 4 SVG</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/4/">http://jsfiddle.net/duto_guerra/hpzm8cgr/4/</a></div>
+            <button onclick="runStep04()" class="execute">Run</button><br>
+            <pre><code>var myData = [ 22, 15, 200];
+var HEIGHT = 40;
+
+var chart = d3.select("#chart04")
+    .append("svg")
+    .attr("width", 400)
+    .attr("height", 400);
+
+var redraw = function (myData) {
+    var items = chart.selectAll("rect")
+        .data(myData);    
+    items.enter()
+        .append("rect")
+        .attr("width", 0);
+    
+    items
+        .attr("x", 0)
+        .attr("y", function (d,i) {
+            return i * (HEIGHT + 1);
+        })
+        .attr("width", function (d) {
+            return d;
+        })    
+        .attr("height", HEIGHT);
+    
+    items.exit().remove();
+};
+
+
+redraw(myData);</code></pre>
+            <div id="chart04" class="target"></div>
+            <script>function runStep04() {var myData = [ 22, 15, 200];
+var HEIGHT = 40;
+
+var chart = d3.select("#chart04")
+    .append("svg")
+    .attr("width", 400)
+    .attr("height", 400);
+
+var redraw = function (myData) {
+    var items = chart.selectAll("rect")
+        .data(myData);    
+    items.enter()
+        .append("rect")
+        .attr("width", 0);
+    
+    items
+        .attr("x", 0)
+        .attr("y", function (d,i) {
+            return i * (HEIGHT + 1);
+        })
+        .attr("width", function (d) {
+            return d;
+        })    
+        .attr("height", HEIGHT);
+    
+    items.exit().remove();
+};
+
+
+redraw(myData);}
+            </script>
+          </section>
+          <section>
+            <h3>Step 5 Transitions</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/5/">http://jsfiddle.net/duto_guerra/hpzm8cgr/5/</a></div>
+            <button onclick="runStep05()" class="execute">Run</button><br>
+            <pre><code>var myData = [ 22, 15, 200];
+var HEIGHT = 20;
+
+var chart = d3.select("#chart05")
+    .append("svg")
+    .attr("width", 400)
+    .attr("height", 400);
+
+var redraw = function (myData) {
+    var items = chart.selectAll("rect")
+        .data(myData);    
+    items.enter()
+        .append("rect")
+        .attr("width", 0);
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("x", 0)
+        .attr("y", function (d,i) {
+            return i * (HEIGHT + 1);
+        })
+        .attr("width", function (d) {
+            return d;
+        })    
+        .attr("height", HEIGHT);
+    
+    items.exit().remove();
+};
+
+
+redraw(myData);
+</code></pre>
+            <div id="chart05" class="target"></div>
+            <script>function runStep05() {var myData = [ 22, 15, 200];
+var HEIGHT = 20;
+
+var chart = d3.select("#chart05")
+    .append("svg")
+    .attr("width", 400)
+    .attr("height", 400);
+
+var redraw = function (myData) {
+    var items = chart.selectAll("rect")
+        .data(myData);    
+    items.enter()
+        .append("rect")
+        .attr("width", 0);
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("x", 0)
+        .attr("y", function (d,i) {
+            return i * (HEIGHT + 1);
+        })
+        .attr("width", function (d) {
+            return d;
+        })    
+        .attr("height", HEIGHT);
+    
+    items.exit().remove();
+};
+
+
+redraw(myData);
+}
+            </script>
+          </section>
+          <section>
+            <h3>Step 6 Scales</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/7/">http://jsfiddle.net/duto_guerra/hpzm8cgr/7/</a></div>
+            <button onclick="runStep06()" class="execute">Run</button><br>
+            <pre><code>var myData = [1,2,3];
+var HEIGHT = 20;
+
+var wScale = d3.scale
+    .linear()
+    .domain([0, d3.max(myData)])
+    .range([0, 400]);
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart06")
+    .append("svg")
+    .attr("width", 400)
+    .attr("height", 400);
+
+var redraw = function (myData) {
+    var items = chart.selectAll("rect")
+        .data(myData);    
+    items.enter()
+        .append("rect")
+        .attr("width", 0)
+        .style("fill", function (d) {
+            return colScale(d);
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("x", 0)
+        .attr("y", function (d,i) {
+            return i * (HEIGHT + 1);
+        })
+        .attr("width", function (d) {
+            return wScale(d);
+        })    
+        .attr("height", HEIGHT);
+    
+    items.exit().remove();
+};
+
+
+redraw(myData);
+</code></pre>
+            <div id="chart06" class="target"></div>
+            <script>function runStep06() {var myData = [1,2,3];
+var HEIGHT = 20;
+
+var wScale = d3.scale
+    .linear()
+    .domain([0, d3.max(myData)])
+    .range([0, 400]);
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart06")
+    .append("svg")
+    .attr("width", 400)
+    .attr("height", 400);
+
+var redraw = function (myData) {
+    var items = chart.selectAll("rect")
+        .data(myData);    
+    items.enter()
+        .append("rect")
+        .attr("width", 0)
+        .style("fill", function (d) {
+            return colScale(d);
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("x", 0)
+        .attr("y", function (d,i) {
+            return i * (HEIGHT + 1);
+        })
+        .attr("width", function (d) {
+            return wScale(d);
+        })    
+        .attr("height", HEIGHT);
+    
+    items.exit().remove();
+};
+
+
+redraw(myData);
+}
+            </script>
+          </section>
+          <section>
+            <h3>Step 7 Axis</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/9/">http://jsfiddle.net/duto_guerra/hpzm8cgr/9/</a></div>
+            <button onclick="runStep07()" class="execute">Run</button><br>
+            <pre><code>var myData = [1,2,3,50,4,3,2,1];
+var HEIGHT = 20;
+var margin = {top: 40, right: 40, bottom: 40, left: 40},
+    width = 500 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+
+var wScale = d3.scale
+    .linear()
+    .domain([0, d3.max(myData)])
+    .range([0, width]);
+var yScale = d3.scale
+    .linear()
+    .domain([0, myData.length])
+    .range([0, height]);
+var xAxis = d3.svg.axis()
+    .scale(wScale)
+    .tickSize(5)
+    .tickSubdivide(true)
+    .orient("top");
+var yAxis  = d3.svg.axis()
+    .scale(yScale)
+    .ticks(4)
+    .orient("left");
+
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart07")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + 0 + ")")
+    .call(xAxis);
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(0,0)")
+    .call(yAxis);
+
+
+var redraw = function (myData) {
+    wScale.domain([0,d3.max(myData)]);
+    yScale.domain([0,myData.length]);
+    var items = chart.selectAll("rect")
+        .data(myData);    
+    items.enter()
+        .append("rect")
+        .attr("width", 0)
+        .style("fill", function (d) {
+            return colScale(d);
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("x", 0)
+        .attr("y", function (d,i) {
+            return yScale(i);
+        })
+        .attr("width", function (d) {
+            return wScale(d);
+        })    
+        .attr("height", HEIGHT);
+    
+    items.exit().remove();
+    
+    chart.select(".x.axis")
+        .transition()
+        .duration(1000)
+        .call(xAxis);
+    
+    chart.select(".y.axis")
+        .transition()
+        .duration(1000)
+        .call(yAxis);    
+};
+
+
+redraw(myData);
+</code></pre>
+            <div id="chart07" class="target"></div>
+            <script>function runStep07() {var myData = [1,2,3,50,4,3,2,1];
+var HEIGHT = 20;
+var margin = {top: 40, right: 40, bottom: 40, left: 40},
+    width = 500 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+
+var wScale = d3.scale
+    .linear()
+    .domain([0, d3.max(myData)])
+    .range([0, width]);
+var yScale = d3.scale
+    .linear()
+    .domain([0, myData.length])
+    .range([0, height]);
+var xAxis = d3.svg.axis()
+    .scale(wScale)
+    .tickSize(5)
+    .tickSubdivide(true)
+    .orient("top");
+var yAxis  = d3.svg.axis()
+    .scale(yScale)
+    .ticks(4)
+    .orient("left");
+
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart07")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + 0 + ")")
+    .call(xAxis);
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(0,0)")
+    .call(yAxis);
+
+
+var redraw = function (myData) {
+    wScale.domain([0,d3.max(myData)]);
+    yScale.domain([0,myData.length]);
+    var items = chart.selectAll("rect")
+        .data(myData);    
+    items.enter()
+        .append("rect")
+        .attr("width", 0)
+        .style("fill", function (d) {
+            return colScale(d);
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("x", 0)
+        .attr("y", function (d,i) {
+            return yScale(i);
+        })
+        .attr("width", function (d) {
+            return wScale(d);
+        })    
+        .attr("height", HEIGHT);
+    
+    items.exit().remove();
+    
+    chart.select(".x.axis")
+        .transition()
+        .duration(1000)
+        .call(xAxis);
+    
+    chart.select(".y.axis")
+        .transition()
+        .duration(1000)
+        .call(yAxis);    
+};
+
+
+redraw(myData);
+}
+            </script>
+          </section>
+          <section>
+            <h3>Step 8 Download data</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/hpzm8cgr/20/">http://jsfiddle.net/hpzm8cgr/20/</a></div>
+            <button onclick="runStep08()" class="execute">Run</button><br>
+            <pre><code>var HEIGHT = 20;
+var margin = {top: 40, right: 40, bottom: 40, left: 40},
+    width = 500 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+
+var wScale = d3.scale
+    .linear()
+    .range([0, width]);
+var yScale = d3.scale
+    .linear()
+    .range([0, height]);
+var xAxis = d3.svg.axis()
+    .scale(wScale)
+    .tickSize(5)
+    .tickSubdivide(true)
+    .orient("top");
+var yAxis  = d3.svg.axis()
+    .scale(yScale)
+    .ticks(4)
+    .orient("left");
+
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart08")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + 0 + ")")
+    .call(xAxis);
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(0,0)")
+    .call(yAxis);
+
+
+var redraw = function (myData, xAttr, yAttr) {
+    myData.forEach(function (d) {
+        d[xAttr] = +d[xAttr];
+        d[yAttr] = +d[yAttr];
+    });
+    
+    var xAcc = function (d) {return d[xAttr];};
+    var yAcc = function (d) {return d[yAttr];};
+    
+    wScale.domain([0, d3.max(myData, xAcc )]);
+    yScale.domain([0, d3.max(myData, yAcc )]);
+    
+    
+    var items = chart.selectAll("circle")
+        .data(myData, function (d) { return d.id; } );    
+    items.enter()
+        .append("circle")
+        .attr("cx", 0)
+        .style("fill", function (d) {
+            return colScale(d.id);
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("cy", function (d) {
+            return yScale(d[yAttr]);
+        })
+        .attr("cx", function (d) {
+            return wScale(d[xAttr]);
+        })    
+        .attr("r", 3);
+    
+    items.exit().remove();
+    
+    chart.select(".x.axis")
+        .transition()
+        .duration(1000)
+        .call(xAxis);
+    
+    chart.select(".y.axis")
+        .transition()
+        .duration(1000)
+        .call(yAxis);    
+};
+
+d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
+        function (error, data) {
+            redraw(data.photos.photo, "count_views", "count_comments");
+        })
+
+</code></pre>
+            <div id="chart08" class="target"></div>
+            <script>function runStep08() {var HEIGHT = 20;
+var margin = {top: 40, right: 40, bottom: 40, left: 40},
+    width = 500 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+
+var wScale = d3.scale
+    .linear()
+    .range([0, width]);
+var yScale = d3.scale
+    .linear()
+    .range([0, height]);
+var xAxis = d3.svg.axis()
+    .scale(wScale)
+    .tickSize(5)
+    .tickSubdivide(true)
+    .orient("top");
+var yAxis  = d3.svg.axis()
+    .scale(yScale)
+    .ticks(4)
+    .orient("left");
+
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart08")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + 0 + ")")
+    .call(xAxis);
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(0,0)")
+    .call(yAxis);
+
+
+var redraw = function (myData, xAttr, yAttr) {
+    myData.forEach(function (d) {
+        d[xAttr] = +d[xAttr];
+        d[yAttr] = +d[yAttr];
+    });
+    
+    var xAcc = function (d) {return d[xAttr];};
+    var yAcc = function (d) {return d[yAttr];};
+    
+    wScale.domain([0, d3.max(myData, xAcc )]);
+    yScale.domain([0, d3.max(myData, yAcc )]);
+    
+    
+    var items = chart.selectAll("circle")
+        .data(myData, function (d) { return d.id; } );    
+    items.enter()
+        .append("circle")
+        .attr("cx", 0)
+        .style("fill", function (d) {
+            return colScale(d.id);
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("cy", function (d) {
+            return yScale(d[yAttr]);
+        })
+        .attr("cx", function (d) {
+            return wScale(d[xAttr]);
+        })    
+        .attr("r", 3);
+    
+    items.exit().remove();
+    
+    chart.select(".x.axis")
+        .transition()
+        .duration(1000)
+        .call(xAxis);
+    
+    chart.select(".y.axis")
+        .transition()
+        .duration(1000)
+        .call(yAxis);    
+};
+
+d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
+        function (error, data) {
+            redraw(data.photos.photo, "count_views", "count_comments");
+        })
+
+}
+            </script>
+          </section>
+          <section>
+            <h3>Step 9 Events</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/hpzm8cgr/21/">http://jsfiddle.net/hpzm8cgr/21/</a></div>
+            <button onclick="runStep09()" class="execute">Run</button><br>
+            <pre><code>var HEIGHT = 20;
+var margin = {top: 40, right: 40, bottom: 40, left: 40},
+    width = 500 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+var FlickrUtils = {};
+
+FlickrUtils.getImgForPhoto = function (ID, server_ID, farm_ID, secret) {
+	//TODO escape variables for security
+	// return "https://farm" + farm_ID + "\.staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
+    var u =  "https://farm" + Math.floor(farm_ID);
+    u +=  "." + "staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
+    return u;
+};
+
+FlickrUtils.getUrlForPhoto = function (ID, owner_ID) {
+    //TODO escape variables for security
+    return "https://www.flickr.com/photos/" + owner_ID + "/" + ID;
+};
+
+
+var wScale = d3.scale
+    .linear()
+    .range([0, width]);
+var yScale = d3.scale
+    .linear()
+    .range([0, height]);
+var xAxis = d3.svg.axis()
+    .scale(wScale)
+    .tickSize(5)
+    .tickSubdivide(true)
+    .orient("top");
+var yAxis  = d3.svg.axis()
+    .scale(yScale)
+    .ticks(4)
+    .orient("left");
+
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart09")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + 0 + ")")
+    .call(xAxis);
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(0,0)")
+    .call(yAxis);
+
+
+var redraw = function (myData, xAttr, yAttr) {
+    myData.forEach(function (d) {
+        d[xAttr] = +d[xAttr];
+        d[yAttr] = +d[yAttr];
+    });
+    
+    var xAcc = function (d) {return d[xAttr];};
+    var yAcc = function (d) {return d[yAttr];};
+    
+    wScale.domain([0, d3.max(myData, xAcc )]);
+    yScale.domain([0, d3.max(myData, yAcc )]);
+    
+    
+    var items = chart.selectAll("circle")
+        .data(myData, function (d) { return d.id; } );    
+    items.enter()
+        .append("circle")
+        .attr("cx", 0)
+        .style("fill", function (d) {
+            return colScale(d.id);
+        })
+        .on("mouseover", function (d) {
+            d3.select("#image09")
+            .attr("src", FlickrUtils.getImgForPhoto(d.id, 
+                                                    d.server, 
+                                                    d.farm, 
+                                                    d.secret));
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("cy", function (d) {
+            return yScale(d[yAttr]);
+        })
+        .attr("cx", function (d) {
+            return wScale(d[xAttr]);
+        })    
+        .attr("r", 10);
+    
+    items.exit().remove();
+    
+    chart.select(".x.axis")
+        .transition()
+        .duration(1000)
+        .call(xAxis);
+    
+    chart.select(".y.axis")
+        .transition()
+        .duration(1000)
+        .call(yAxis);    
+};
+
+d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
+        function (error, data) {
+            redraw(data.photos.photo, "count_views", "count_comments");
+        })
+
+</code></pre>
+            <div class="target">
+              <div id="chart09"></div><img id="image09">
+            </div>
+            <script>function runStep09() {var HEIGHT = 20;
+var margin = {top: 40, right: 40, bottom: 40, left: 40},
+    width = 500 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+var FlickrUtils = {};
+
+FlickrUtils.getImgForPhoto = function (ID, server_ID, farm_ID, secret) {
+	//TODO escape variables for security
+	// return "https://farm" + farm_ID + "\.staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
+    var u =  "https://farm" + Math.floor(farm_ID);
+    u +=  "." + "staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
+    return u;
+};
+
+FlickrUtils.getUrlForPhoto = function (ID, owner_ID) {
+    //TODO escape variables for security
+    return "https://www.flickr.com/photos/" + owner_ID + "/" + ID;
+};
+
+
+var wScale = d3.scale
+    .linear()
+    .range([0, width]);
+var yScale = d3.scale
+    .linear()
+    .range([0, height]);
+var xAxis = d3.svg.axis()
+    .scale(wScale)
+    .tickSize(5)
+    .tickSubdivide(true)
+    .orient("top");
+var yAxis  = d3.svg.axis()
+    .scale(yScale)
+    .ticks(4)
+    .orient("left");
+
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart09")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + 0 + ")")
+    .call(xAxis);
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(0,0)")
+    .call(yAxis);
+
+
+var redraw = function (myData, xAttr, yAttr) {
+    myData.forEach(function (d) {
+        d[xAttr] = +d[xAttr];
+        d[yAttr] = +d[yAttr];
+    });
+    
+    var xAcc = function (d) {return d[xAttr];};
+    var yAcc = function (d) {return d[yAttr];};
+    
+    wScale.domain([0, d3.max(myData, xAcc )]);
+    yScale.domain([0, d3.max(myData, yAcc )]);
+    
+    
+    var items = chart.selectAll("circle")
+        .data(myData, function (d) { return d.id; } );    
+    items.enter()
+        .append("circle")
+        .attr("cx", 0)
+        .style("fill", function (d) {
+            return colScale(d.id);
+        })
+        .on("mouseover", function (d) {
+            d3.select("#image09")
+            .attr("src", FlickrUtils.getImgForPhoto(d.id, 
+                                                    d.server, 
+                                                    d.farm, 
+                                                    d.secret));
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("cy", function (d) {
+            return yScale(d[yAttr]);
+        })
+        .attr("cx", function (d) {
+            return wScale(d[xAttr]);
+        })    
+        .attr("r", 10);
+    
+    items.exit().remove();
+    
+    chart.select(".x.axis")
+        .transition()
+        .duration(1000)
+        .call(xAxis);
+    
+    chart.select(".y.axis")
+        .transition()
+        .duration(1000)
+        .call(yAxis);    
+};
+
+d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
+        function (error, data) {
+            redraw(data.photos.photo, "count_views", "count_comments");
+        })
+
+}
+            </script>
+          </section>
+          <section>
+            <h3>Step 10 Extras</h3>
+            <div class="followLink"><a href="http://jsfiddle.net/hpzm8cgr/22/">http://jsfiddle.net/hpzm8cgr/22/</a></div>
+            <button onclick="runStep10()" class="execute">Run</button><br>
+            <pre><code>var HEIGHT = 20;
+var margin = {top: 40, right: 40, bottom: 40, left: 40},
+    width = 500 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+var FlickrUtils = {};
+
+FlickrUtils.getImgForPhoto = function (ID, server_ID, farm_ID, secret) {
+	//TODO escape variables for security
+	// return "https://farm" + farm_ID + "\.staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
+    var u =  "https://farm" + Math.floor(farm_ID);
+    u +=  "." + "staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
+    return u;
+};
+
+FlickrUtils.getUrlForPhoto = function (ID, owner_ID) {
+    //TODO escape variables for security
+    return "https://www.flickr.com/photos/" + owner_ID + "/" + ID;
+};
+
+
+var wScale = d3.scale
+    .linear()
+    .range([0, width]);
+var yScale = d3.scale
+    .linear()
+    .range([0, height]);
+var xAxis = d3.svg.axis()
+    .scale(wScale)
+    .tickSize(5)
+    .tickSubdivide(true)
+    .orient("top");
+var yAxis  = d3.svg.axis()
+    .scale(yScale)
+    .ticks(4)
+    .orient("left");
+
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart10")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + 0 + ")")
+    .call(xAxis);
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(0,0)")
+    .call(yAxis);
+
+
+var redraw = function (myData, xAttr, yAttr) {
+    myData.forEach(function (d) {
+        d[xAttr] = +d[xAttr];
+        d[yAttr] = +d[yAttr];
+    });
+    
+    var xAcc = function (d) {return d[xAttr];};
+    var yAcc = function (d) {return d[yAttr];};
+    
+    wScale.domain([0, d3.max(myData, xAcc )]);
+    yScale.domain([0, d3.max(myData, yAcc )]);
+    
+    
+    var items = chart.selectAll("circle")
+        .data(myData, function (d) { return d.id; } );    
+    items.enter()
+        .append("circle")
+        .attr("cx", 0)
+        .style("fill", function (d) {
+            return colScale(d.id);
+        })
+        .on("mouseover", function (d) {
+            d3.select("#image10")
+            .attr("src", FlickrUtils.getImgForPhoto(d.id, 
+                                                    d.server, 
+                                                    d.farm, 
+                                                    d.secret));
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("cy", function (d) {
+            return yScale(d[yAttr]);
+        })
+        .attr("cx", function (d) {
+            return wScale(d[xAttr]);
+        })    
+        .attr("r", 10);
+    
+    items.exit().remove();
+    
+    chart.select(".x.axis")
+        .transition()
+        .duration(1000)
+        .call(xAxis);
+    
+    chart.select(".y.axis")
+        .transition()
+        .duration(1000)
+        .call(yAxis);    
+};
+
+d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
+        function (error, data) {
+
+            redraw(data.photos.photo, "count_views", "count_comments");
+            d3.select("#attrSelect")
+            .on("change", function (d) {
+                redraw(data.photos.photo, this.value, "count_comments");
+            });            
+        })
+
+</code></pre>
+            <div class="target">
+              <select id="attrSelect">
+                <option value="count_views">views</option>
+                <option value="count_faves">faves</option>
+                <option value="count_comments">comments</option>
+              </select>
+              <div id="chart10"></div><img id="image10">
+            </div>
+            <script>function runStep10() {var HEIGHT = 20;
+var margin = {top: 40, right: 40, bottom: 40, left: 40},
+    width = 500 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+var FlickrUtils = {};
+
+FlickrUtils.getImgForPhoto = function (ID, server_ID, farm_ID, secret) {
+	//TODO escape variables for security
+	// return "https://farm" + farm_ID + "\.staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
+    var u =  "https://farm" + Math.floor(farm_ID);
+    u +=  "." + "staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
+    return u;
+};
+
+FlickrUtils.getUrlForPhoto = function (ID, owner_ID) {
+    //TODO escape variables for security
+    return "https://www.flickr.com/photos/" + owner_ID + "/" + ID;
+};
+
+
+var wScale = d3.scale
+    .linear()
+    .range([0, width]);
+var yScale = d3.scale
+    .linear()
+    .range([0, height]);
+var xAxis = d3.svg.axis()
+    .scale(wScale)
+    .tickSize(5)
+    .tickSubdivide(true)
+    .orient("top");
+var yAxis  = d3.svg.axis()
+    .scale(yScale)
+    .ticks(4)
+    .orient("left");
+
+var colScale = d3.scale
+    .category20();
+
+
+var chart = d3.select("#chart10")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + 0 + ")")
+    .call(xAxis);
+
+// Add the x-axis.
+chart.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(0,0)")
+    .call(yAxis);
+
+
+var redraw = function (myData, xAttr, yAttr) {
+    myData.forEach(function (d) {
+        d[xAttr] = +d[xAttr];
+        d[yAttr] = +d[yAttr];
+    });
+    
+    var xAcc = function (d) {return d[xAttr];};
+    var yAcc = function (d) {return d[yAttr];};
+    
+    wScale.domain([0, d3.max(myData, xAcc )]);
+    yScale.domain([0, d3.max(myData, yAcc )]);
+    
+    
+    var items = chart.selectAll("circle")
+        .data(myData, function (d) { return d.id; } );    
+    items.enter()
+        .append("circle")
+        .attr("cx", 0)
+        .style("fill", function (d) {
+            return colScale(d.id);
+        })
+        .on("mouseover", function (d) {
+            d3.select("#image10")
+            .attr("src", FlickrUtils.getImgForPhoto(d.id, 
+                                                    d.server, 
+                                                    d.farm, 
+                                                    d.secret));
+        });
+    
+    items
+        .transition()
+        .duration(1000)
+        .attr("cy", function (d) {
+            return yScale(d[yAttr]);
+        })
+        .attr("cx", function (d) {
+            return wScale(d[xAttr]);
+        })    
+        .attr("r", 10);
+    
+    items.exit().remove();
+    
+    chart.select(".x.axis")
+        .transition()
+        .duration(1000)
+        .call(xAxis);
+    
+    chart.select(".y.axis")
+        .transition()
+        .duration(1000)
+        .call(yAxis);    
+};
+
+d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
+        function (error, data) {
+
+            redraw(data.photos.photo, "count_views", "count_comments");
+            d3.select("#attrSelect")
+            .on("change", function (d) {
+                redraw(data.photos.photo, this.value, "count_comments");
+            });            
+        })
+
+}
+            </script>
+          </section>
+        </section>
+        <section id="resources">
+          <h2>Resources</h2>
+          <p><a href="http://d3js.org/" target="_blank">D3.js Website</a></p>
+          <p><a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">Gallery</a></p>
+          <p><a href="https://github.com/mbostock/d3/wiki/Tutorials" target="_blank">Tutorials</a></p>
+          <p><a href="https://github.com/mbostock/d3/wiki/API-Reference" target="_blank">API Reference</a></p>
+          <p><a href="https://github.com/mbostock/d3" target="_blank">GitHub Project</a></p>
+        </section>
+        <section id="end">
+          <h1>Thank You</h1>
+          <h2>Questions?</h2>
+          <div class="contactInfo">
+            <p>John Alexis Guerra Gómez</p><a href="http://johnguerra.co">johnguerra.co</a><br><a href="http://twitter.com/duto_guerra">@duto_guerra</a>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="lib/js/reveal.js"></script>
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        rollingLinks: true,
+        transition: "convex",
+        //- width: "90%",
+        //- height: 1.0,
+        dependencies: [
+          // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      
+          // Interpret Markdown in <section> elements
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+          // Syntax highlight for <code> elements
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      
+          // Zoom in and out with Alt+click
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+      
+          // Speaker notes
+          { src: 'plugin/notes/notes.js', async: true },
+      
+          //- // Remote control your reveal.js presentation using a touch device
+          //- { src: 'plugin/remotes/remotes.js', async: true },
+      
+          //- // MathJax
+          //- { src: 'plugin/math/math.js', async: true }
+        ]
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-50178794-5', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
