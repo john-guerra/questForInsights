@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="704px" height="443px" viewBox="0 0 704 443" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>Hadoop Architecture</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-2" stroke="#62787F" stroke-width="5" fill="#C5F1FF" x="0" y="292" width="704" height="151"></rect>
+        <rect id="Rectangle-2" stroke="#62787F" stroke-width="4" fill="#B1D8E5" x="-5.68434189e-14" y="146" width="523" height="151"></rect>
+        <rect id="Rectangle-2" stroke="#313C40" stroke-width="4" fill="#94B4BF" x="0" y="0" width="175" height="151"></rect>
+        <text id="Hive" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="49.7900009" font-weight="bold" fill="#FFFFFF">
+            <tspan x="35.394764" y="88">Hive</tspan>
+        </text>
+        <rect id="Rectangle-2" stroke="#62787F" stroke-width="4" fill="#B1D8E5" x="0" y="0" width="175" height="151"></rect>
+        <rect id="Rectangle-2-Copy" stroke="#62787F" stroke-width="4" fill="#B1D8E5" x="171" y="0" width="175" height="151"></rect>
+        <rect id="Rectangle-2-Copy" stroke="#62787F" stroke-width="4" fill="#B1D8E5" x="342" y="0" width="175" height="151"></rect>
+        <text id="…" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="49.7900009" font-weight="bold" fill="#313C40">
+            <tspan x="399.105" y="88">…</tspan>
+        </text>
+        <rect id="Rectangle-2-Copy" stroke="#62787F" stroke-width="4" fill="#D0E5EC" x="513" y="0" width="191" height="297"></rect>
+        <text id="Spark" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="49.7900009" font-weight="bold" fill="#313C40">
+            <tspan x="539.368684" y="168">Spark</tspan>
+        </text>
+        <text id="Hive" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="49.7900009" font-weight="bold" fill="#313C40">
+            <tspan x="35.394764" y="95">Hive</tspan>
+        </text>
+        <text id="Pig" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="49.7900009" font-weight="bold" fill="#313C40">
+            <tspan x="220.261279" y="95">Pig</tspan>
+        </text>
+        <text id="MapReduce" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="49.7900009" font-weight="bold" fill="#313C40">
+            <tspan x="119.102697" y="234">MapReduce</tspan>
+        </text>
+        <text id="HDFS" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="49.7900009" font-weight="bold" fill="#313C40">
+            <tspan x="284.436019" y="387">HDFS</tspan>
+        </text>
+    </g>
+</svg>

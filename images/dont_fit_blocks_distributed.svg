@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="640px" height="480px" viewBox="0 0 640 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>dont_fit_blocks_distributed</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="dont_fit_blocks_distributed">
+            <g id="Computer" transform="translate(38.000000, 237.000000)" filter="url(#filter-1)" fill="#B1D8E5">
+                <path d="M72.2973568,164.7 L121.002386,164.7 C123.759558,164.7 126,162.462981 126,159.703479 L126,4.99652073 C126,2.23453819 123.762492,0 121.002386,0 L4.99761351,0 C2.24044198,0 0,2.23701853 0,4.99652073 L0,159.703479 C0,162.465462 2.23750778,164.7 4.99761351,164.7 L53.7026432,164.7 L44.4052863,183 L81.5947137,183 L72.2973568,164.7 Z" id="Combined-Shape"></path>
+            </g>
+            <g id="Computer" transform="translate(174.000000, 237.000000)" filter="url(#filter-2)" fill="#B1D8E5">
+                <path d="M72.2973568,164.7 L121.002386,164.7 C123.759558,164.7 126,162.462981 126,159.703479 L126,4.99652073 C126,2.23453819 123.762492,0 121.002386,0 L4.99761351,0 C2.24044198,0 0,2.23701853 0,4.99652073 L0,159.703479 C0,162.465462 2.23750778,164.7 4.99761351,164.7 L53.7026432,164.7 L44.4052863,183 L81.5947137,183 L72.2973568,164.7 Z" id="Combined-Shape"></path>
+            </g>
+            <g id="Computer" transform="translate(308.000000, 237.000000)" filter="url(#filter-3)" fill="#B1D8E5">
+                <path d="M72.2973568,164.7 L121.002386,164.7 C123.759558,164.7 126,162.462981 126,159.703479 L126,4.99652073 C126,2.23453819 123.762492,0 121.002386,0 L4.99761351,0 C2.24044198,0 0,2.23701853 0,4.99652073 L0,159.703479 C0,162.465462 2.23750778,164.7 4.99761351,164.7 L53.7026432,164.7 L44.4052863,183 L81.5947137,183 L72.2973568,164.7 Z" id="Combined-Shape"></path>
+            </g>
+            <g id="Computer" transform="translate(481.000000, 237.000000)" filter="url(#filter-4)" fill="#B1D8E5">
+                <path d="M72.2973568,164.7 L121.002386,164.7 C123.759558,164.7 126,162.462981 126,159.703479 L126,4.99652073 C126,2.23453819 123.762492,0 121.002386,0 L4.99761351,0 C2.24044198,0 0,2.23701853 0,4.99652073 L0,159.703479 C0,162.465462 2.23750778,164.7 4.99761351,164.7 L53.7026432,164.7 L44.4052863,183 L81.5947137,183 L72.2973568,164.7 Z" id="Combined-Shape"></path>
+            </g>
+            <text id="Node-1" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="24" font-weight="bold" fill="#313C40">
+                <tspan x="38.048" y="443">Node 1</tspan>
+            </text>
+            <text id="Node-7" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="24" font-weight="bold" fill="#313C40">
+                <tspan x="481.048" y="443">Node 7</tspan>
+            </text>
+            <text id="Node-3" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="24" font-weight="bold" fill="#313C40">
+                <tspan x="308.048" y="443">Node 3</tspan>
+            </text>
+            <text id="Node-2" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="24" font-weight="bold" fill="#313C40">
+                <tspan x="174.048" y="443">Node 2</tspan>
+            </text>
+            <g id="Group" transform="translate(49.000000, 250.000000)">
+                <rect id="Rectangle-9" stroke="#E0E0E0" fill="#94B4BF" x="0" y="0" width="70" height="22"></rect>
+                <text id="Block-1" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" fill="#313C40">
+                    <tspan x="8.115" y="15">Block 1</tspan>
+                </text>
+            </g>
+            <g id="Group-2" transform="translate(181.000000, 250.000000)">
+                <rect id="Rectangle-9" stroke="#E0E0E0" fill="#94B4BF" x="0" y="0" width="70" height="22"></rect>
+                <text id="Block-2" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" fill="#313C40">
+                    <tspan x="10.115" y="15">Block 2</tspan>
+                </text>
+            </g>
+            <g id="Group-3" transform="translate(319.000000, 250.000000)">
+                <rect id="Rectangle-9" stroke="#E0E0E0" fill="#94B4BF" x="0" y="0" width="70" height="22"></rect>
+                <text id="Block-3" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" fill="#313C40">
+                    <tspan x="10.115" y="15">Block 3</tspan>
+                </text>
+            </g>
+            <g id="Group-5" transform="translate(491.000000, 250.000000)">
+                <rect id="Rectangle-9" stroke="#E0E0E0" fill="#94B4BF" x="0" y="0" width="21" height="22"></rect>
+                <text id="B7" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" fill="#313C40">
+                    <tspan x="2.18" y="15">B7</tspan>
+                </text>
+            </g>
+            <text id="…" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" fill="#313C40">
+                <tspan x="451" y="312">…</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

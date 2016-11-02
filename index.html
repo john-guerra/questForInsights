@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Intro to InfoVis using d3.js</title>
+    <title>The quest for insights, the true objective of big data</title>
     <meta charset="utf-8">
     <meta name="author" content="John Alexis Guerra Gomez">
-    <meta name="description" content="Intro to Big data">
+    <meta name="description" content="The quest for insights, the true objective of big data">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link href="style.css" rel="stylesheet">
     <script>
@@ -21,34 +21,70 @@
     <div class="reveal">
       <div class="slides">
         <section id="title">
-          <h1>Intro to BigData</h1>
-          <p><a href="http://johnguerra.co/" target="_blank">John Alexis Guerra Gómez</a></p>
-          <p class="small">Use<strong>spacebar</strong>and the arrows to advance slides</p>
-          <p class="small"><a href="http://infovis.co/introToBigData" target="_blank">http://infovis.co/introToBigData</a></p>
+          <h1>The quest for insights,</h1>
+          <h2>the true objective of big data</h2>
+          <p><a href="http://johnguerra.co/" target="_blank">John Alexis Guerra Gómez</a><br><a href="http://twitter.com/duto_guerra">@duto_guerra</a></p>
+          <p class="small">Use<strong> spacebar</strong> and the arrows to advance slides</p>
+          <p class="small"><a href="http://infovis.co/bigDataQuest" target="_blank">http://infovis.co/bigDataQuest</a></p>
         </section>
         <section id="outline">
           <h2>Outline</h2>
           <ol>
+            <li>Who am I?</li>
             <li>What is Big Data?</li>
-            <li>Analytics: How to make sense of data?</li>
-            <li>Techniques</li>
-            <li>Technologies</li>
-            <li>What is Infovis?</li>
-            <li>Infovis Basics</li>
+            <li>How to process/store it?</li>
+            <li>How to make sense of it?</li>
           </ol>
+        </section>
+        <section id="whoamI">
+          <section>
+            <h1>Who am I?</h1>
+          </section>
+          <section><img src="images/Pereira.png">
+          </section>
+          <section id="IRIS"><img src="images/IRIS_y_su_caja_peq.png"></section>
+          <section id="KebSolutions"><img src="images/logo_keb.png"></section>
+          <section id="Fulbright"><img src="images/fulbright.png"></section>
+          <section id="Doctorado">
+            <h1>PhD</h1>
+          </section>
+          <section id="HCIL"><img src="images/Ben_and_Catherine.jpg"></section>
+          <section>
+            <iframe src="https://cdn.rawgit.com/mbostock/4063582/raw/dd152a94f98ab7081a41096a88ece375e64a8b6c/index.html" class="blocks"></iframe>
+          </section>
+          <section><img src="images/lifelines.jpg"></section>
+          <section><img src="images/lifeflow.png"></section>
+          <section><img src="images/2012_08_20_paxs_overview_september_01.png"></section>
+          <section><img src="images/treeversity_v2.png"></section>
+          <section>
+          </section>
+          <section><img src="images/2013_04_29_eBay.png"></section>
+          <section><img src="images/13CaseStudies.png"></section>
+          <section>
+            <h2>Silicon Valley</h2>
+          </section>
+          <section><img src="images/parc_rgb.png"></section>
+          <section><img src="images/topics_steamchart_with_wordclouds.png" class="demo"></section>
+          <section><img src="images/labs_us_purple_1000px_wide.png"></section>
+          <section><img src="images/christmass.png"></section>
+          <section><img src="images/FlickrPopular.png"></section>
+          <section><img src="images/topPhotos.png"></section>
+          <section><img src="images/photoRing.png"></section>
+          
         </section>
         <section id="whatIsBigData">
           <section>
-            <h2>What is Big Data?</h2>
+            <h1>What is Big Data?</h1>
           </section>
           <section>
-            <h2>You might have heard of the 3Vs</h2>
+            <h2>You might have heard of the Vs of Big Data</h2>
             <ul>
+              <li class="fragment">Volume</li>
               <li class="fragment">Velocity</li>
               <li class="fragment">Variety</li>
-              <li class="fragment">Volume</li>
+              <li class="fragment">and Veracity and Value</li>
+              <li class="fragment">Too ambiguous!! Let's go beyond that</li>
             </ul>
-            <p class="fragment">Too ambiguous!! Let's go beyond that</p>
           </section>
           <section>
             <h2>How Big is big?</h2>
@@ -60,6 +96,8 @@
             <h2>Why this criteria?</h2>
             <p class="fragment">Because if it fits in one computer you don't need all the overhead of big data technologies, just use a traditional relational database.</p>
           </section>
+          <section><img src="images/datafit1.svg"></section>
+          <section><img src="images/datafit2.svg"></section>
           <section>
             <h2>Example: photo collection</h2>
             <ul>
@@ -68,7 +106,6 @@
               <li class="fragment">50k photos in your computer -> 10MB * 50k = 500GB</li>
               <li class="fragment">Is that big data?</li>
               <li class="fragment">No, you can fit that in one cheap external hard drive</li>
-              <li class="fragment">BTW, Flickr gives you 1000GB (1TB) for free</li>
             </ul>
           </section>
           <section>
@@ -77,6 +114,7 @@
             <p class="fragment">Put all your photos in one computer</p>
             <p class="fragment">Go through all the collection and count</p>
           </section>
+          <section><img src="images/datafit_processing.svg"></section>
           <section>
             <h2>Flickr size</h2>
             <p>80+ trillion photos (80'''000''000'000.000)</p>
@@ -89,6 +127,11 @@
             <p class="fragment">Compute subtotals on each chunk of the data. (Map)</p>
             <p class="fragment">Aggregate the subtotals into one big total. (Reduce)</p>
           </section>
+          <section><img src="images/dont_fit.svg"></section>
+          <section><img src="images/dont_fit2.svg"></section>
+          <section><img src="images/dont_fit_blocks.svg"></section>
+          <section><img src="images/dont_fit_blocks_distributed.svg"></section>
+          <section><img src="images/map_reduce.svg"></section>
           <section>
             <h2>How many computers do you need?</h2>
             <p class="fragment">total / one computer capacity?</p>
@@ -97,54 +140,83 @@
             <p class="fragment">How do we control versions? How to keep records? What goes where?</p>
             <p class="fragment"><strong>That's why we need big data!!</strong></p>
           </section>
-        </section>
-        <section>
+          <section><img src="images/redundancy.svg"></section>
           <section id="Technologies">
-            <h1>Technologies</h1>
+            <h2>Technologies</h2>
             <ul>
-              <li class="fragment">Map-Reduce (Hadoop, Hive, Spark, pig, ...)</li>
-              <li class="fragment">NoSQL Databases (MongoDB)</li>
+              <li class="fragment">MapReduce (Hadoop, Hive, pig, Spark ...)</li>
+              <li class="fragment">NoSQL Databases (Redis, Cassandra, MongoDB, Neo4J)</li>
               <li class="fragment">Distributed Relational (SQL) Databases (MySQL, PostgreSQL, Oracle, SqlServer)</li>
-              <li class="fragment">All are technologies of cloud computing (Amazon Web Service, Google App Engine, Microsoft Azure)</li>
+              <li class="fragment">Many others</li>
             </ul>
           </section>
-          <section id="Techniques">
-            <h1>Technologies</h1>
+          <section>
+            <h2>Hadoop</h2>
             <ul>
-              <li class="fragment">Statistic Analysis</li>
-              <li class="fragment">Machine Learning</li>
-              <li class="fragment">Artificial Intelligence</li>
-              <li class="fragment">Analytics</li>
-              <li class="fragment">Information Visualization</li>
+              <li>Computing platform for big data</li>
+              <li>Uses clusters for storing and processing the data</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Hadoop Architecture</h2><img src="images/Hadoop Architecture.svg">
+          </section>
+          <section>
+            <h2>Spark</h2>
+            <p>A distributed computing alternative of to map reduce.</p>
+            <ul>
+              <li>Easier to use</li>
+              <li>Integrates better with traditional programming models</li>
+            </ul>
+          </section>
+          <section>
+            <h2>NoSQL Databases</h2>
+            <ul>
+              <li>Scalable storage platforms that use techniques different to traditional SQL databases</li>
+              <li>Sacrifices features for performance</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Types of NoSQL</h2>
+            <ul>
+              <li class="fragment">Column Oriented: Cassandra, HBase, Redshift ...</li>
+              <li class="fragment">Key-value: Redis, memcached, Aerospike ....</li>
+              <li class="fragment">Document based: MongoDB, CouchDB, DynamoDB ...</li>
+              <li class="fragment">Graph based: Neo4J, Titan, ...</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Bonus</h2>
+            <p><a href="https://vimeo.com/156305374">Introduction to NoSQL for Web Developers</a></p>
+          </section>
+          <section>
+            <h2>Distributed Relational DB</h2>
+            <ul>
+              <li>You can also use traditional databases on a distributed way.</li>
+              <li>Divides the database into shards.</li>
+              <li>Usually doesn't scale that well.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Others</h2>
+            <ul>
+              <li>Google <a href="https://cloud.google.com/dataflow/">DataFlow</a></li>
+              <li>Google's replacement for MapReduce based on flows.</li>
+              <li>Supposed to scale better.</li>
+              <li>AFAIK can only be used with Google's Cloud.</li>
             </ul>
           </section>
         </section>
-        <section id="whatIsInfoVis">
+        <section id="howToMakeSense">
           <section>
-            <h2>What is Information Visualization?</h2>
+            <h1>Making sense</h1>
           </section>
           <section>
-            <h2>Data</h2>
+            <h2>How to make sense of it?</h2>
             <ul>
-              <li>Health records</li>
-              <li>Financial transactions</li>
-              <li>Facebook Social Graph</li>
-              <li>Tweets</li>
-              <li>Wikipedia edits</li>
+              <li class="fragment">Statistical Analysis</li>
+              <li class="fragment">Machine Learning and Artificial Intelligence</li>
+              <li class="fragment">Visual Analytics (and data analytics)</li>
             </ul>
-          </section>
-          <section>
-            <h2>Data (II)</h2>
-            <ul>
-              <li>We know how to:
-                <li>Store it (big table, NoSql, etc)</li>
-                <li>Process it (map-reduce, parallel computing)</li>
-              </li>
-              <li>But how to make sense of it?</li>
-            </ul>
-          </section>
-          <section>
-            <h2>How to make sense of data?</h2>
           </section>
           <section>
             <h3>Data Mining/Machine Learning</h3>
@@ -222,14 +294,138 @@
             <h2>Anscombe's visualized</h2><img src="images/anscombes_graph.jpg">
           </section>
           <section>
-            <h2>In Infovis we look for insights</h2>
+            <h2>In Infovis we look for <strong>Insights</strong></h2>
             <ul>
-              <li>Deep understanding</li>
-              <li>Meaningful</li>
-              <li>Non obvious</li>
-              <li>Actionable</li>
+              <li class="fragment">Deep understanding</li>
+              <li class="fragment">Meaningful</li>
+              <li class="fragment">Non obvious</li>
+              <li class="fragment">Actionable</li>
             </ul>
           </section>
+          <section>
+            <h2>How do I do it?</h2><img src="images/My skills.png" class="demo">
+          </section>
+          <section id="BuscandoInsights">
+            <h2>What do I use?</h2><img src="images/What I use.png" class="demo">
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Insights</h1>
+          </section>
+          <section id="InsightFDA">
+            <h2>FDA</h2>
+            <p>Task: Change in drug's adverse effects reports</p>
+            <p>User: FDA Analysts</p>
+          </section>
+          <section>
+            <h2>State of the art</h2><img src="images/sectorMap_drug1.png" class="demo">
+          </section>
+          <section><img src="images/side_by_side_Vasc_sectorMaps.png" class="demo"></section>
+          <section><img src="images/skylines_explanation.png"></section>
+          <section><a href="https://treeversity.cattlab.umd.edu/?hierarchy=soc/hlgt/hlt/pt&amp;db=tv2_sectorMaps6&amp;seqFrom=01/01/08&amp;seqTo=01/01/12&amp;viz=Skylines&amp;fixedHierarchy=soc/hlgt/hlt/pt&amp;valueAttrib=ebgm&amp;title=FDA%20Adverse%20Drug%20Effects" target="_blank"><img src="images/2013_03_29_FDA_all.png"></a><a href="https://treeversity.cattlab.umd.edu/">https://treeversity.cattlab.umd.edu/</a></section>
+          <section id="InsightPARC">
+            <h2>Health insurance claims</h2>
+            <p>Task: Detect fraud networks</p>
+            <p>User: Undisclosed Analysts</p>
+          </section>
+          <section><img src="images/network_explorer_before.png" class="demo"></section>
+          <section>
+            <h2>Clustering</h2>
+            <iframe src="https://cdn.rawgit.com/john-guerra/ecdde32ab4ad91a1a240/raw/2c1a843df8631604a99140ddc9db8ee048624a79/index.html" class="blocks"></iframe>
+          </section>
+          <section>
+            <h2>Force in a box</h2>
+            <iframe src="https://cdn.rawgit.com/john-guerra/14c943d8f198d9f3fef2/raw/320474d468321d00f3241609a125c8d37935474b/index.html" class="blocks"></iframe>
+          </section>
+          <section>
+            <h2>Overview</h2><img src="images/overview_10k_nointer_cropped.png" class="demo">
+          </section>
+          <section>
+            <h2>Ego distance</h2><img src="images/network_explorer_ego_distance.png" class="demo">
+          </section>
+          <section id="InsightTweetometro">
+            <h2>Tweetometro</h2>
+            <p>Task: Twitter behavior during Presidential Elections</p>
+            <p>User: Me</p>
+          </section>
+          <section>
+            <iframe src="http://tweetometro.co" alt="images/tweetometro.png" class="blocks"></iframe><a href="http://tweetometro.co">http://tweetometro.co</a>
+          </section>
+          <section>
+            <h2>Normal tweets</h2><img src="http://tweetometro.co/img/all_tweets_May_25_2014.png" class="demo">
+          </section>
+          <section>
+            <h2>Weird tweets?</h2><img src="http://tweetometro.co/img/suspicious_tweets_May_25_2014.png" class="demo">
+          </section>
+          <section>
+            <h2>Creation dates</h2><img src="http://tweetometro.co/img/user_creation_date_May_25_2014.png" class="demo">
+          </section>
+          <section>
+            <h2>Number of followers</h2><img src="http://tweetometro.co/img/num_followers_May_25_2014.png" class="demo">
+          </section>
+          <section><span>
+              <script type='text/javascript' src='http://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1032px; height: 677px;'><noscript><a href='http:&#47;&#47;tweetometro.co&#47;robots_May25.html'><img alt='Análisis Elecciones Presidenciales Colombia ' src='http:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;An&#47;AnlisisPosiblesRobotsEleccionesColombiaMay25&#47;AnlisisEleccionesPresidencialesColombia&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='1032' height='677' style='display:none;'><param name='host_url' value='http%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='AnlisisPosiblesRobotsEleccionesColombiaMay25&#47;AnlisisEleccionesPresidencialesColombia' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='http:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;An&#47;AnlisisPosiblesRobotsEleccionesColombiaMay25&#47;AnlisisEleccionesPresidencialesColombia&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+              </span></section>
+          <section id="InsightCars">
+            <h2>What car to buy?</h2>
+            <p>Task: What's the best car to buy?</p>
+            <p>User: Me</p>
+          </section>
+          <section>
+            <h2>Normal procedure</h2>
+            <p>Ask friends and family</p>
+          </section>
+          <section id="Renault4"><span>
+              <a data-flickr-embed="true"  href="https://www.flickr.com/photos/synx508/8083533370/in/photolist-djjdR1-afaxQE-88rrWV-85GG7C-dhdprm-cB1GP1-6T5Y57-bwHLJo-kCowWc-q7ohL2-pZdWRQ-aqbuDd-CwU436-8Eruxo-nzoa7c-BzobPh-ptWmt6-BYoC9H-81RCdE-dPuGGx-q4JtAk-7XXciZ-r1UjFV-iKrUr5-iEmCiG-pcraD8-fNGpSf-fNGpFd-cN7xp-7SC3f9-D3mfHj-dhdpZ8-nzh5GD-85GGwL-5wBWcW-7tCm5D-8RDcp9-7kBmch-afaxQJ-8RA446-9z4AuX-6B9YeE-9ZVygr-7SC3f5-e3sALe-6B5Zon-apFGuQ-a6gMVY-5wVRyj-7pJkMr" title="Renault 4"><img src="https://c3.staticflickr.com/9/8055/8083533370_a0597b2b89_b.jpg" width="1024" height="683" alt="Renault 4"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+              </span></section>
+          <section id="Renault4Pimped"><span>
+              <a data-flickr-embed="true"  href="https://www.flickr.com/photos/zenzak35/14225528098/" title="Renault 4 JP4"><img src="https://c3.staticflickr.com/4/3909/14225528098_f77d8393ac_b.jpg" width="1024" height="576" alt="Renault 4 JP4"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+              
+              </span></section>
+          <section id="Renault4Crashed"><span>
+              <a data-flickr-embed="true"  href="https://www.flickr.com/photos/95012335@N02/16327150369/in/photolist-qSLUYz-p8zsEJ-fHL1jE-4grA8b-8YBfrt-8mRG7n-49vZ6h-dXiuZG-kseXjY-CpB1rB-kCp4NF-75n5c9-8PiBKZ-5999UC-C5Lz5Y-eBWbNx-eBEvp-fBpDP7-nF4xTQ-8spzYg-a7ovQd-4r1u5g-aPE45k-7R62M3-dZQnYp-djjdR1-afaxQE-88rrWV-85GG7C-dhdprm-cB1GP1-6T5Y57-bwHLJo-kCowWc-q7ohL2-pZdWRQ-aqbuDd-CwU436-8Eruxo-nzoa7c-BzobPh-ptWmt6-BYoC9H-81RCdE-dPuGGx-q4JtAk-7XXciZ-r1UjFV-iKrUr5-iEmCiG" title="Teilgefalteter Renault 4 am Strassenrand"><img src="https://c2.staticflickr.com/8/7437/16327150369_c5a839efab_b.jpg" width="1024" height="681" alt="Teilgefalteter Renault 4 am Strassenrand"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+              </span></section>
+          <section>
+            <h2>Problem</h2>
+            <p>That's inferring statistics from a sample n=1</p>
+          </section>
+          <section>
+            <h2>Better approach</h2>
+            <p>Data based decisions</p>
+          </section>
+          <section><img src="images/tucarro.png"><a href="http://tucarro.com">http://tucarro.com</a></section>
+          <section>
+            <iframe src="http://infovis.co/carrosUsados/todosPuntos.html" class="blocks"></iframe>
+          </section>
+          <section>
+            <iframe src="http://infovis.co/carrosUsados/depreciacionMarcas.html" class="blocks"></iframe>
+          </section>
+          <section>
+            <iframe src="http://infovis.co/carrosUsados/depreciacionesCarros.html" class="blocks"></iframe>
+          </section>
+          
+          
+          
+          
+        </section>
+        <section>
+          <h2>Take home message</h2>
+          <ul>
+            <li class="fragment">Big data? Sure, If it doesn't fit on a computer</li>
+            <li class="fragment">Finding <strong>insights</strong>, that's what matters</li>
+            <li class="fragment"><strong>Visual Analytics</strong>, a good way of finding insights</li>
+          </ul>
+        </section>
+        <section id="end">
+          <h1>Thank You</h1>
+          <h2>Questions?</h2>
+          <div class="contactInfo">
+            <p>John Alexis Guerra Gómez</p><a href="http://johnguerra.co">johnguerra.co</a><br><a href="http://twitter.com/duto_guerra">@duto_guerra</a>
+          </div>
+        </section>
+        <section id="Bonus">
+          <h1>Bonus</h1>
         </section>
         <section id="typesOfVisualization">
           <section>
@@ -254,8 +450,6 @@
           <section>
             <h3>Information Visualization</h3><img src="images/infovis_examples.png">
           </section>
-        </section>
-        <section id="basics">
           <section>
             <h2>Infovis Basics</h2>
           </section>
@@ -341,1271 +535,8 @@
             </section>
           </section>
         </section>
-        <section id="handsOn">
-          <section>
-            <h2>Hands-On Tutorial</h2>Follow tutorial here<a href="https://goo.gl/KZTCsG"> https://goo.gl/KZTCsG</a>
-          </section>
-          <section>
-            <h3>Step 1: Selections</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/1/">http://jsfiddle.net/duto_guerra/hpzm8cgr/1/</a></div>
-            <button onclick="runStep01()" class="execute">Run</button><br>
-            <pre><code>d3.select("#chart01")
-    .append("p")
-    .text("hola mundo");
-
-d3.selectAll("p")
-    .style("font-size", "23pt");</code></pre>
-            <div id="chart01" class="target"></div>
-            <script>function runStep01() {d3.select("#chart01")
-    .append("p")
-    .text("hola mundo");
-
-d3.selectAll("p")
-    .style("font-size", "23pt");}
-            </script>
-          </section>
-          <section>
-            <h3>Step 2 Binding data</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/2/">http://jsfiddle.net/duto_guerra/hpzm8cgr/2/</a></div>
-            <button onclick="runStep02()" class="execute">Run</button><br>
-            <pre><code>var myData = [ 22, 15, 20];
-
-var chart = d3.select("#chart02");
-
-var items = chart.selectAll("p")
-    .data(myData);
-
-items.enter().append("p")
-    .style("font-size", function (d) {
-        return d + "pt";
-    })
-    .text("hola mundo");
-</code></pre>
-            <div id="chart02" class="target"></div>
-            <script>function runStep02() {var myData = [ 22, 15, 20];
-
-var chart = d3.select("#chart02");
-
-var items = chart.selectAll("p")
-    .data(myData);
-
-items.enter().append("p")
-    .style("font-size", function (d) {
-        return d + "pt";
-    })
-    .text("hola mundo");
-}
-            </script>
-          </section>
-          <section>
-            <h3>Step 3 Remove and Update</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/3/">http://jsfiddle.net/duto_guerra/hpzm8cgr/3/</a></div>
-            <button onclick="runStep03()" class="execute">Run</button><br>
-            <pre><code>var myData = [ 22, 15, 20];
-
-var chart = d3.select("#chart03");
-
-var redraw = function (myData) {
-    var items = chart.selectAll("p")
-        .data(myData);    
-    items.enter().append("p");
-    
-    items
-        .style("font-size", function (d) {
-            return d + "pt";
-        })
-        .text("hola mundo");
-    
-    items.exit().remove();
-};
-
-
-redraw(myData);
-</code></pre>
-            <div id="chart03" class="target"></div>
-            <script>function runStep03() {var myData = [ 22, 15, 20];
-
-var chart = d3.select("#chart03");
-
-var redraw = function (myData) {
-    var items = chart.selectAll("p")
-        .data(myData);    
-    items.enter().append("p");
-    
-    items
-        .style("font-size", function (d) {
-            return d + "pt";
-        })
-        .text("hola mundo");
-    
-    items.exit().remove();
-};
-
-
-redraw(myData);
-}
-            </script>
-          </section>
-          <section>
-            <h3>Step 4 SVG</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/4/">http://jsfiddle.net/duto_guerra/hpzm8cgr/4/</a></div>
-            <button onclick="runStep04()" class="execute">Run</button><br>
-            <pre><code>var myData = [ 22, 15, 200];
-var HEIGHT = 40;
-
-var chart = d3.select("#chart04")
-    .append("svg")
-    .attr("width", 400)
-    .attr("height", 400);
-
-var redraw = function (myData) {
-    var items = chart.selectAll("rect")
-        .data(myData);    
-    items.enter()
-        .append("rect")
-        .attr("width", 0);
-    
-    items
-        .attr("x", 0)
-        .attr("y", function (d,i) {
-            return i * (HEIGHT + 1);
-        })
-        .attr("width", function (d) {
-            return d;
-        })    
-        .attr("height", HEIGHT);
-    
-    items.exit().remove();
-};
-
-
-redraw(myData);</code></pre>
-            <div id="chart04" class="target"></div>
-            <script>function runStep04() {var myData = [ 22, 15, 200];
-var HEIGHT = 40;
-
-var chart = d3.select("#chart04")
-    .append("svg")
-    .attr("width", 400)
-    .attr("height", 400);
-
-var redraw = function (myData) {
-    var items = chart.selectAll("rect")
-        .data(myData);    
-    items.enter()
-        .append("rect")
-        .attr("width", 0);
-    
-    items
-        .attr("x", 0)
-        .attr("y", function (d,i) {
-            return i * (HEIGHT + 1);
-        })
-        .attr("width", function (d) {
-            return d;
-        })    
-        .attr("height", HEIGHT);
-    
-    items.exit().remove();
-};
-
-
-redraw(myData);}
-            </script>
-          </section>
-          <section>
-            <h3>Step 5 Transitions</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/5/">http://jsfiddle.net/duto_guerra/hpzm8cgr/5/</a></div>
-            <button onclick="runStep05()" class="execute">Run</button><br>
-            <pre><code>var myData = [ 22, 15, 200];
-var HEIGHT = 20;
-
-var chart = d3.select("#chart05")
-    .append("svg")
-    .attr("width", 400)
-    .attr("height", 400);
-
-var redraw = function (myData) {
-    var items = chart.selectAll("rect")
-        .data(myData);    
-    items.enter()
-        .append("rect")
-        .attr("width", 0);
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("x", 0)
-        .attr("y", function (d,i) {
-            return i * (HEIGHT + 1);
-        })
-        .attr("width", function (d) {
-            return d;
-        })    
-        .attr("height", HEIGHT);
-    
-    items.exit().remove();
-};
-
-
-redraw(myData);
-</code></pre>
-            <div id="chart05" class="target"></div>
-            <script>function runStep05() {var myData = [ 22, 15, 200];
-var HEIGHT = 20;
-
-var chart = d3.select("#chart05")
-    .append("svg")
-    .attr("width", 400)
-    .attr("height", 400);
-
-var redraw = function (myData) {
-    var items = chart.selectAll("rect")
-        .data(myData);    
-    items.enter()
-        .append("rect")
-        .attr("width", 0);
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("x", 0)
-        .attr("y", function (d,i) {
-            return i * (HEIGHT + 1);
-        })
-        .attr("width", function (d) {
-            return d;
-        })    
-        .attr("height", HEIGHT);
-    
-    items.exit().remove();
-};
-
-
-redraw(myData);
-}
-            </script>
-          </section>
-          <section>
-            <h3>Step 6 Scales</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/7/">http://jsfiddle.net/duto_guerra/hpzm8cgr/7/</a></div>
-            <button onclick="runStep06()" class="execute">Run</button><br>
-            <pre><code>var myData = [1,2,3];
-var HEIGHT = 20;
-
-var wScale = d3.scale
-    .linear()
-    .domain([0, d3.max(myData)])
-    .range([0, 400]);
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart06")
-    .append("svg")
-    .attr("width", 400)
-    .attr("height", 400);
-
-var redraw = function (myData) {
-    var items = chart.selectAll("rect")
-        .data(myData);    
-    items.enter()
-        .append("rect")
-        .attr("width", 0)
-        .style("fill", function (d) {
-            return colScale(d);
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("x", 0)
-        .attr("y", function (d,i) {
-            return i * (HEIGHT + 1);
-        })
-        .attr("width", function (d) {
-            return wScale(d);
-        })    
-        .attr("height", HEIGHT);
-    
-    items.exit().remove();
-};
-
-
-redraw(myData);
-</code></pre>
-            <div id="chart06" class="target"></div>
-            <script>function runStep06() {var myData = [1,2,3];
-var HEIGHT = 20;
-
-var wScale = d3.scale
-    .linear()
-    .domain([0, d3.max(myData)])
-    .range([0, 400]);
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart06")
-    .append("svg")
-    .attr("width", 400)
-    .attr("height", 400);
-
-var redraw = function (myData) {
-    var items = chart.selectAll("rect")
-        .data(myData);    
-    items.enter()
-        .append("rect")
-        .attr("width", 0)
-        .style("fill", function (d) {
-            return colScale(d);
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("x", 0)
-        .attr("y", function (d,i) {
-            return i * (HEIGHT + 1);
-        })
-        .attr("width", function (d) {
-            return wScale(d);
-        })    
-        .attr("height", HEIGHT);
-    
-    items.exit().remove();
-};
-
-
-redraw(myData);
-}
-            </script>
-          </section>
-          <section>
-            <h3>Step 7 Axis</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/duto_guerra/hpzm8cgr/9/">http://jsfiddle.net/duto_guerra/hpzm8cgr/9/</a></div>
-            <button onclick="runStep07()" class="execute">Run</button><br>
-            <pre><code>var myData = [1,2,3,50,4,3,2,1];
-var HEIGHT = 20;
-var margin = {top: 40, right: 40, bottom: 40, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-
-
-var wScale = d3.scale
-    .linear()
-    .domain([0, d3.max(myData)])
-    .range([0, width]);
-var yScale = d3.scale
-    .linear()
-    .domain([0, myData.length])
-    .range([0, height]);
-var xAxis = d3.svg.axis()
-    .scale(wScale)
-    .tickSize(5)
-    .tickSubdivide(true)
-    .orient("top");
-var yAxis  = d3.svg.axis()
-    .scale(yScale)
-    .ticks(4)
-    .orient("left");
-
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart07")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + 0 + ")")
-    .call(xAxis);
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(0,0)")
-    .call(yAxis);
-
-
-var redraw = function (myData) {
-    wScale.domain([0,d3.max(myData)]);
-    yScale.domain([0,myData.length]);
-    var items = chart.selectAll("rect")
-        .data(myData);    
-    items.enter()
-        .append("rect")
-        .attr("width", 0)
-        .style("fill", function (d) {
-            return colScale(d);
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("x", 0)
-        .attr("y", function (d,i) {
-            return yScale(i);
-        })
-        .attr("width", function (d) {
-            return wScale(d);
-        })    
-        .attr("height", HEIGHT);
-    
-    items.exit().remove();
-    
-    chart.select(".x.axis")
-        .transition()
-        .duration(1000)
-        .call(xAxis);
-    
-    chart.select(".y.axis")
-        .transition()
-        .duration(1000)
-        .call(yAxis);    
-};
-
-
-redraw(myData);
-</code></pre>
-            <div id="chart07" class="target"></div>
-            <script>function runStep07() {var myData = [1,2,3,50,4,3,2,1];
-var HEIGHT = 20;
-var margin = {top: 40, right: 40, bottom: 40, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-
-
-var wScale = d3.scale
-    .linear()
-    .domain([0, d3.max(myData)])
-    .range([0, width]);
-var yScale = d3.scale
-    .linear()
-    .domain([0, myData.length])
-    .range([0, height]);
-var xAxis = d3.svg.axis()
-    .scale(wScale)
-    .tickSize(5)
-    .tickSubdivide(true)
-    .orient("top");
-var yAxis  = d3.svg.axis()
-    .scale(yScale)
-    .ticks(4)
-    .orient("left");
-
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart07")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + 0 + ")")
-    .call(xAxis);
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(0,0)")
-    .call(yAxis);
-
-
-var redraw = function (myData) {
-    wScale.domain([0,d3.max(myData)]);
-    yScale.domain([0,myData.length]);
-    var items = chart.selectAll("rect")
-        .data(myData);    
-    items.enter()
-        .append("rect")
-        .attr("width", 0)
-        .style("fill", function (d) {
-            return colScale(d);
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("x", 0)
-        .attr("y", function (d,i) {
-            return yScale(i);
-        })
-        .attr("width", function (d) {
-            return wScale(d);
-        })    
-        .attr("height", HEIGHT);
-    
-    items.exit().remove();
-    
-    chart.select(".x.axis")
-        .transition()
-        .duration(1000)
-        .call(xAxis);
-    
-    chart.select(".y.axis")
-        .transition()
-        .duration(1000)
-        .call(yAxis);    
-};
-
-
-redraw(myData);
-}
-            </script>
-          </section>
-          <section>
-            <h3>Step 8 Download data</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/hpzm8cgr/20/">http://jsfiddle.net/hpzm8cgr/20/</a></div>
-            <button onclick="runStep08()" class="execute">Run</button><br>
-            <pre><code>var HEIGHT = 20;
-var margin = {top: 40, right: 40, bottom: 40, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-
-
-var wScale = d3.scale
-    .linear()
-    .range([0, width]);
-var yScale = d3.scale
-    .linear()
-    .range([0, height]);
-var xAxis = d3.svg.axis()
-    .scale(wScale)
-    .tickSize(5)
-    .tickSubdivide(true)
-    .orient("top");
-var yAxis  = d3.svg.axis()
-    .scale(yScale)
-    .ticks(4)
-    .orient("left");
-
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart08")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + 0 + ")")
-    .call(xAxis);
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(0,0)")
-    .call(yAxis);
-
-
-var redraw = function (myData, xAttr, yAttr) {
-    myData.forEach(function (d) {
-        d[xAttr] = +d[xAttr];
-        d[yAttr] = +d[yAttr];
-    });
-    
-    var xAcc = function (d) {return d[xAttr];};
-    var yAcc = function (d) {return d[yAttr];};
-    
-    wScale.domain([0, d3.max(myData, xAcc )]);
-    yScale.domain([0, d3.max(myData, yAcc )]);
-    
-    
-    var items = chart.selectAll("circle")
-        .data(myData, function (d) { return d.id; } );    
-    items.enter()
-        .append("circle")
-        .attr("cx", 0)
-        .style("fill", function (d) {
-            return colScale(d.id);
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("cy", function (d) {
-            return yScale(d[yAttr]);
-        })
-        .attr("cx", function (d) {
-            return wScale(d[xAttr]);
-        })    
-        .attr("r", 3);
-    
-    items.exit().remove();
-    
-    chart.select(".x.axis")
-        .transition()
-        .duration(1000)
-        .call(xAxis);
-    
-    chart.select(".y.axis")
-        .transition()
-        .duration(1000)
-        .call(yAxis);    
-};
-
-d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
-        function (error, data) {
-            redraw(data.photos.photo, "count_views", "count_comments");
-        })
-
-</code></pre>
-            <div id="chart08" class="target"></div>
-            <script>function runStep08() {var HEIGHT = 20;
-var margin = {top: 40, right: 40, bottom: 40, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-
-
-var wScale = d3.scale
-    .linear()
-    .range([0, width]);
-var yScale = d3.scale
-    .linear()
-    .range([0, height]);
-var xAxis = d3.svg.axis()
-    .scale(wScale)
-    .tickSize(5)
-    .tickSubdivide(true)
-    .orient("top");
-var yAxis  = d3.svg.axis()
-    .scale(yScale)
-    .ticks(4)
-    .orient("left");
-
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart08")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + 0 + ")")
-    .call(xAxis);
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(0,0)")
-    .call(yAxis);
-
-
-var redraw = function (myData, xAttr, yAttr) {
-    myData.forEach(function (d) {
-        d[xAttr] = +d[xAttr];
-        d[yAttr] = +d[yAttr];
-    });
-    
-    var xAcc = function (d) {return d[xAttr];};
-    var yAcc = function (d) {return d[yAttr];};
-    
-    wScale.domain([0, d3.max(myData, xAcc )]);
-    yScale.domain([0, d3.max(myData, yAcc )]);
-    
-    
-    var items = chart.selectAll("circle")
-        .data(myData, function (d) { return d.id; } );    
-    items.enter()
-        .append("circle")
-        .attr("cx", 0)
-        .style("fill", function (d) {
-            return colScale(d.id);
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("cy", function (d) {
-            return yScale(d[yAttr]);
-        })
-        .attr("cx", function (d) {
-            return wScale(d[xAttr]);
-        })    
-        .attr("r", 3);
-    
-    items.exit().remove();
-    
-    chart.select(".x.axis")
-        .transition()
-        .duration(1000)
-        .call(xAxis);
-    
-    chart.select(".y.axis")
-        .transition()
-        .duration(1000)
-        .call(yAxis);    
-};
-
-d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
-        function (error, data) {
-            redraw(data.photos.photo, "count_views", "count_comments");
-        })
-
-}
-            </script>
-          </section>
-          <section>
-            <h3>Step 9 Events</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/hpzm8cgr/21/">http://jsfiddle.net/hpzm8cgr/21/</a></div>
-            <button onclick="runStep09()" class="execute">Run</button><br>
-            <pre><code>var HEIGHT = 20;
-var margin = {top: 40, right: 40, bottom: 40, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-
-var FlickrUtils = {};
-
-FlickrUtils.getImgForPhoto = function (ID, server_ID, farm_ID, secret) {
-	//TODO escape variables for security
-	// return "https://farm" + farm_ID + "\.staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
-    var u =  "https://farm" + Math.floor(farm_ID);
-    u +=  "." + "staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
-    return u;
-};
-
-FlickrUtils.getUrlForPhoto = function (ID, owner_ID) {
-    //TODO escape variables for security
-    return "https://www.flickr.com/photos/" + owner_ID + "/" + ID;
-};
-
-
-var wScale = d3.scale
-    .linear()
-    .range([0, width]);
-var yScale = d3.scale
-    .linear()
-    .range([0, height]);
-var xAxis = d3.svg.axis()
-    .scale(wScale)
-    .tickSize(5)
-    .tickSubdivide(true)
-    .orient("top");
-var yAxis  = d3.svg.axis()
-    .scale(yScale)
-    .ticks(4)
-    .orient("left");
-
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart09")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + 0 + ")")
-    .call(xAxis);
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(0,0)")
-    .call(yAxis);
-
-
-var redraw = function (myData, xAttr, yAttr) {
-    myData.forEach(function (d) {
-        d[xAttr] = +d[xAttr];
-        d[yAttr] = +d[yAttr];
-    });
-    
-    var xAcc = function (d) {return d[xAttr];};
-    var yAcc = function (d) {return d[yAttr];};
-    
-    wScale.domain([0, d3.max(myData, xAcc )]);
-    yScale.domain([0, d3.max(myData, yAcc )]);
-    
-    
-    var items = chart.selectAll("circle")
-        .data(myData, function (d) { return d.id; } );    
-    items.enter()
-        .append("circle")
-        .attr("cx", 0)
-        .style("fill", function (d) {
-            return colScale(d.id);
-        })
-        .on("mouseover", function (d) {
-            d3.select("#image09")
-            .attr("src", FlickrUtils.getImgForPhoto(d.id, 
-                                                    d.server, 
-                                                    d.farm, 
-                                                    d.secret));
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("cy", function (d) {
-            return yScale(d[yAttr]);
-        })
-        .attr("cx", function (d) {
-            return wScale(d[xAttr]);
-        })    
-        .attr("r", 10);
-    
-    items.exit().remove();
-    
-    chart.select(".x.axis")
-        .transition()
-        .duration(1000)
-        .call(xAxis);
-    
-    chart.select(".y.axis")
-        .transition()
-        .duration(1000)
-        .call(yAxis);    
-};
-
-d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
-        function (error, data) {
-            redraw(data.photos.photo, "count_views", "count_comments");
-        })
-
-</code></pre>
-            <div class="target">
-              <div id="chart09"></div><img id="image09">
-            </div>
-            <script>function runStep09() {var HEIGHT = 20;
-var margin = {top: 40, right: 40, bottom: 40, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-
-var FlickrUtils = {};
-
-FlickrUtils.getImgForPhoto = function (ID, server_ID, farm_ID, secret) {
-	//TODO escape variables for security
-	// return "https://farm" + farm_ID + "\.staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
-    var u =  "https://farm" + Math.floor(farm_ID);
-    u +=  "." + "staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
-    return u;
-};
-
-FlickrUtils.getUrlForPhoto = function (ID, owner_ID) {
-    //TODO escape variables for security
-    return "https://www.flickr.com/photos/" + owner_ID + "/" + ID;
-};
-
-
-var wScale = d3.scale
-    .linear()
-    .range([0, width]);
-var yScale = d3.scale
-    .linear()
-    .range([0, height]);
-var xAxis = d3.svg.axis()
-    .scale(wScale)
-    .tickSize(5)
-    .tickSubdivide(true)
-    .orient("top");
-var yAxis  = d3.svg.axis()
-    .scale(yScale)
-    .ticks(4)
-    .orient("left");
-
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart09")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + 0 + ")")
-    .call(xAxis);
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(0,0)")
-    .call(yAxis);
-
-
-var redraw = function (myData, xAttr, yAttr) {
-    myData.forEach(function (d) {
-        d[xAttr] = +d[xAttr];
-        d[yAttr] = +d[yAttr];
-    });
-    
-    var xAcc = function (d) {return d[xAttr];};
-    var yAcc = function (d) {return d[yAttr];};
-    
-    wScale.domain([0, d3.max(myData, xAcc )]);
-    yScale.domain([0, d3.max(myData, yAcc )]);
-    
-    
-    var items = chart.selectAll("circle")
-        .data(myData, function (d) { return d.id; } );    
-    items.enter()
-        .append("circle")
-        .attr("cx", 0)
-        .style("fill", function (d) {
-            return colScale(d.id);
-        })
-        .on("mouseover", function (d) {
-            d3.select("#image09")
-            .attr("src", FlickrUtils.getImgForPhoto(d.id, 
-                                                    d.server, 
-                                                    d.farm, 
-                                                    d.secret));
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("cy", function (d) {
-            return yScale(d[yAttr]);
-        })
-        .attr("cx", function (d) {
-            return wScale(d[xAttr]);
-        })    
-        .attr("r", 10);
-    
-    items.exit().remove();
-    
-    chart.select(".x.axis")
-        .transition()
-        .duration(1000)
-        .call(xAxis);
-    
-    chart.select(".y.axis")
-        .transition()
-        .duration(1000)
-        .call(yAxis);    
-};
-
-d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
-        function (error, data) {
-            redraw(data.photos.photo, "count_views", "count_comments");
-        })
-
-}
-            </script>
-          </section>
-          <section>
-            <h3>Step 10 Extras</h3>
-            <div class="followLink"><a href="http://jsfiddle.net/hpzm8cgr/22/">http://jsfiddle.net/hpzm8cgr/22/</a></div>
-            <button onclick="runStep10()" class="execute">Run</button><br>
-            <pre><code>var HEIGHT = 20;
-var margin = {top: 40, right: 40, bottom: 40, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-
-var FlickrUtils = {};
-
-FlickrUtils.getImgForPhoto = function (ID, server_ID, farm_ID, secret) {
-	//TODO escape variables for security
-	// return "https://farm" + farm_ID + "\.staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
-    var u =  "https://farm" + Math.floor(farm_ID);
-    u +=  "." + "staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
-    return u;
-};
-
-FlickrUtils.getUrlForPhoto = function (ID, owner_ID) {
-    //TODO escape variables for security
-    return "https://www.flickr.com/photos/" + owner_ID + "/" + ID;
-};
-
-
-var wScale = d3.scale
-    .linear()
-    .range([0, width]);
-var yScale = d3.scale
-    .linear()
-    .range([0, height]);
-var xAxis = d3.svg.axis()
-    .scale(wScale)
-    .tickSize(5)
-    .tickSubdivide(true)
-    .orient("top");
-var yAxis  = d3.svg.axis()
-    .scale(yScale)
-    .ticks(4)
-    .orient("left");
-
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart10")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + 0 + ")")
-    .call(xAxis);
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(0,0)")
-    .call(yAxis);
-
-
-var redraw = function (myData, xAttr, yAttr) {
-    myData.forEach(function (d) {
-        d[xAttr] = +d[xAttr];
-        d[yAttr] = +d[yAttr];
-    });
-    
-    var xAcc = function (d) {return d[xAttr];};
-    var yAcc = function (d) {return d[yAttr];};
-    
-    wScale.domain([0, d3.max(myData, xAcc )]);
-    yScale.domain([0, d3.max(myData, yAcc )]);
-    
-    
-    var items = chart.selectAll("circle")
-        .data(myData, function (d) { return d.id; } );    
-    items.enter()
-        .append("circle")
-        .attr("cx", 0)
-        .style("fill", function (d) {
-            return colScale(d.id);
-        })
-        .on("mouseover", function (d) {
-            d3.select("#image10")
-            .attr("src", FlickrUtils.getImgForPhoto(d.id, 
-                                                    d.server, 
-                                                    d.farm, 
-                                                    d.secret));
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("cy", function (d) {
-            return yScale(d[yAttr]);
-        })
-        .attr("cx", function (d) {
-            return wScale(d[xAttr]);
-        })    
-        .attr("r", 10);
-    
-    items.exit().remove();
-    
-    chart.select(".x.axis")
-        .transition()
-        .duration(1000)
-        .call(xAxis);
-    
-    chart.select(".y.axis")
-        .transition()
-        .duration(1000)
-        .call(yAxis);    
-};
-
-d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
-        function (error, data) {
-
-            redraw(data.photos.photo, "count_views", "count_comments");
-            d3.select("#attrSelect")
-            .on("change", function (d) {
-                redraw(data.photos.photo, this.value, "count_comments");
-            });            
-        })
-
-</code></pre>
-            <div class="target">
-              <select id="attrSelect">
-                <option value="count_views">views</option>
-                <option value="count_faves">faves</option>
-                <option value="count_comments">comments</option>
-              </select>
-              <div id="chart10"></div><img id="image10">
-            </div>
-            <script>function runStep10() {var HEIGHT = 20;
-var margin = {top: 40, right: 40, bottom: 40, left: 40},
-    width = 500 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
-
-var FlickrUtils = {};
-
-FlickrUtils.getImgForPhoto = function (ID, server_ID, farm_ID, secret) {
-	//TODO escape variables for security
-	// return "https://farm" + farm_ID + "\.staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
-    var u =  "https://farm" + Math.floor(farm_ID);
-    u +=  "." + "staticflickr.com/" + server_ID+ "/" + ID + "_" + secret + "_m.jpg";
-    return u;
-};
-
-FlickrUtils.getUrlForPhoto = function (ID, owner_ID) {
-    //TODO escape variables for security
-    return "https://www.flickr.com/photos/" + owner_ID + "/" + ID;
-};
-
-
-var wScale = d3.scale
-    .linear()
-    .range([0, width]);
-var yScale = d3.scale
-    .linear()
-    .range([0, height]);
-var xAxis = d3.svg.axis()
-    .scale(wScale)
-    .tickSize(5)
-    .tickSubdivide(true)
-    .orient("top");
-var yAxis  = d3.svg.axis()
-    .scale(yScale)
-    .ticks(4)
-    .orient("left");
-
-var colScale = d3.scale
-    .category20();
-
-
-var chart = d3.select("#chart10")
-    .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + 0 + ")")
-    .call(xAxis);
-
-// Add the x-axis.
-chart.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(0,0)")
-    .call(yAxis);
-
-
-var redraw = function (myData, xAttr, yAttr) {
-    myData.forEach(function (d) {
-        d[xAttr] = +d[xAttr];
-        d[yAttr] = +d[yAttr];
-    });
-    
-    var xAcc = function (d) {return d[xAttr];};
-    var yAcc = function (d) {return d[yAttr];};
-    
-    wScale.domain([0, d3.max(myData, xAcc )]);
-    yScale.domain([0, d3.max(myData, yAcc )]);
-    
-    
-    var items = chart.selectAll("circle")
-        .data(myData, function (d) { return d.id; } );    
-    items.enter()
-        .append("circle")
-        .attr("cx", 0)
-        .style("fill", function (d) {
-            return colScale(d.id);
-        })
-        .on("mouseover", function (d) {
-            d3.select("#image10")
-            .attr("src", FlickrUtils.getImgForPhoto(d.id, 
-                                                    d.server, 
-                                                    d.farm, 
-                                                    d.secret));
-        });
-    
-    items
-        .transition()
-        .duration(1000)
-        .attr("cy", function (d) {
-            return yScale(d[yAttr]);
-        })
-        .attr("cx", function (d) {
-            return wScale(d[xAttr]);
-        })    
-        .attr("r", 10);
-    
-    items.exit().remove();
-    
-    chart.select(".x.axis")
-        .transition()
-        .duration(1000)
-        .call(xAxis);
-    
-    chart.select(".y.axis")
-        .transition()
-        .duration(1000)
-        .call(yAxis);    
-};
-
-d3.json("https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=53ecac56654e39cf9d2cf52fbecdfc6b&extras=count_views%2C+count_faves%2C+count_comments&format=json&nojsoncallback=1",
-        function (error, data) {
-
-            redraw(data.photos.photo, "count_views", "count_comments");
-            d3.select("#attrSelect")
-            .on("change", function (d) {
-                redraw(data.photos.photo, this.value, "count_comments");
-            });            
-        })
-
-}
-            </script>
-          </section>
-        </section>
-        <section id="resources">
-          <h2>Resources</h2>
-          <p><a href="http://d3js.org/" target="_blank">D3.js Website</a></p>
-          <p><a href="https://github.com/mbostock/d3/wiki/Gallery" target="_blank">Gallery</a></p>
-          <p><a href="https://github.com/mbostock/d3/wiki/Tutorials" target="_blank">Tutorials</a></p>
-          <p><a href="https://github.com/mbostock/d3/wiki/API-Reference" target="_blank">API Reference</a></p>
-          <p><a href="https://github.com/mbostock/d3" target="_blank">GitHub Project</a></p>
-        </section>
-        <section id="end">
-          <h1>Thank You</h1>
-          <h2>Questions?</h2>
-          <div class="contactInfo">
-            <p>John Alexis Guerra Gómez</p><a href="http://johnguerra.co">johnguerra.co</a><br><a href="http://twitter.com/duto_guerra">@duto_guerra</a>
-          </div>
-        </section>
+        
+        
       </div>
     </div>
     <script src="lib/js/head.min.js"></script>
